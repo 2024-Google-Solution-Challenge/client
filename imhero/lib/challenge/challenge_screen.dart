@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 
 import "package:imhero/common/dotted_line.dart";
+import "package:imhero/common/colors.dart";
 
 import 'package:imhero/challenge/gage_bar.dart';
 import 'package:imhero/challenge/status_graph.dart';
@@ -16,18 +17,42 @@ class ChallengeScreen extends StatefulWidget {
 class _ChallengeScreenState extends State<ChallengeScreen> {
   int level = 1;
   int maxLevel = 10;
-  bool toggle = false;
+  bool toggle = true;
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+        child: Padding(
+      padding: const EdgeInsets.all(20),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text("One-day goal challenge"),
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            child: const Text(
+              "One-day goal challenge",
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: BODY_TITLE_COLOR,
+                decoration: TextDecoration.underline,
+                decorationColor: HIGHLIGHT_COLOR,
+                decorationThickness: 5,
+              ),
+            ),
+          ),
           Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text("You are Hero!"),
+              const Text(
+                "You are Hero!",
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  color: TITLE_TEXT_COLOR,
+                ),
+              ),
               IconButton(
                 onPressed: () {
                   setState(() {
@@ -39,7 +64,11 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
               ),
             ],
           ),
-          toggle ? GageBar(level, maxLevel).build() : const StatusGraph(),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.4,
+            child:
+                toggle ? GageBar(level, maxLevel).build() : const StatusGraph(),
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -59,6 +88,6 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
           const ChallengeList(),
         ],
       ),
-    );
+    ));
   }
 }

@@ -10,17 +10,17 @@ class GageBar {
     return Row(
       children: [
         Container(
-          width: 100,
-          height: 10,
+          width: 300,
+          height: 50,
           decoration: BoxDecoration(
             color: Colors.grey,
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(25),
           ),
           child: Stack(
+            alignment: Alignment.centerLeft,
             children: [
               Container(
                 width: 100 * (level / maxLevel),
-                height: 10,
                 decoration: BoxDecoration(
                   color: Colors.green,
                   borderRadius: BorderRadius.circular(10),
