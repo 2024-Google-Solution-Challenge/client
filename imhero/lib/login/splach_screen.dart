@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
+import 'package:imhero/common/colors.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SplashScreen extends StatelessWidget {
   @override
@@ -9,24 +11,15 @@ class SplashScreen extends StatelessWidget {
     });
     return MaterialApp(
       home: Scaffold(
-        body: Container(
-            // Add your splash screen UI components here
-            ),
-      ),
-    );
-  }
-}
-
-class MainScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('My App'),
-      ),
-      body: Container(
-          // Add your main screen UI components here
+        backgroundColor: PRIMARY_COLOR,
+        body: Center(
+          child: SvgPicture.string(
+            '../../asset/img/imhero.svg',
+            width: 500,
+            height: 500,
           ),
+        ),
+      ),
     );
   }
 }
@@ -36,7 +29,6 @@ void main() {
     initialRoute: '/splash',
     routes: {
       '/splash': (context) => SplashScreen(),
-      '/home': (context) => MainScreen(),
     },
   ));
 }
