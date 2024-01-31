@@ -1,5 +1,10 @@
 import 'package:imhero/common/colors.dart';
 import 'package:imhero/common/layout.dart';
+import 'package:imhero/comunity/comunity_screen.dart';
+import 'package:imhero/flower/flower_screen.dart';
+import 'package:imhero/map/map_screen.dart';
+import 'package:imhero/challenge/challenge_screen.dart';
+
 import 'package:flutter/material.dart';
 
 class RootTab extends StatefulWidget {
@@ -46,10 +51,10 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
         physics: NeverScrollableScrollPhysics(),
         controller: controller,
         children: [
-          RestaurantScreen(),
-          ProductScreen(),
-          OrderScreen(),
-          ProfileScreen(),
+          FlowerScreen(),
+          MapScreen(),
+          ChallengeScreen(),
+          ComunityScreen(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
