@@ -1,5 +1,7 @@
 import 'package:imhero/common/colors.dart';
 import 'package:imhero/common/layout.dart';
+
+import 'package:imhero/mypage/mypage_screen.dart';
 import 'package:imhero/comunity/comunity_screen.dart';
 import 'package:imhero/flower/flower_screen.dart';
 import 'package:imhero/map/map_screen.dart';
@@ -47,6 +49,16 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return DefaultLayout(
       title: 'IMHERO',
+      action: IconButton(
+        icon: const Icon(Icons.person_outline),
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const MyPageScreen(),
+              ));
+        },
+      ),
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: PRIMARY_COLOR,
         unselectedItemColor: BODY_TEXT_COLOR,

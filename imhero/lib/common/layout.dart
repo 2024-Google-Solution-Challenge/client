@@ -4,6 +4,7 @@ class DefaultLayout extends StatelessWidget {
   final Color? backgroundColor;
   final Widget child;
   final String? title;
+  final Widget? action;
   final Widget? bottomNavigationBar;
   final Widget? floatingActionButton;
 
@@ -11,6 +12,7 @@ class DefaultLayout extends StatelessWidget {
     required this.child,
     this.backgroundColor,
     this.title,
+    this.action,
     this.bottomNavigationBar,
     this.floatingActionButton,
     Key? key,
@@ -28,7 +30,7 @@ class DefaultLayout extends StatelessWidget {
   }
 
   AppBar? renderAppBar() {
-    if (title == null) {
+    if (title == null && action == null) {
       return null;
     } else {
       return AppBar(
@@ -41,6 +43,9 @@ class DefaultLayout extends StatelessWidget {
             fontWeight: FontWeight.w500,
           ),
         ),
+        actions: [
+          action!,
+        ],
         foregroundColor: Colors.black,
       );
     }
