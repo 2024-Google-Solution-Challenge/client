@@ -5,6 +5,6 @@ class MyPageScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("MyPageScreen");
+    return const Text("MyPageScreen");
   }
 }
