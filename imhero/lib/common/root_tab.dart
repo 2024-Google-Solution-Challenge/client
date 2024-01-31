@@ -93,8 +93,8 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
         controller: controller,
         children: const [
           FlowerScreen(),
-          MapScreen(),
           ChallengeScreen(),
+          MapScreen(),
           ComunityScreen(),
         ],
       ),

@@ -20,21 +20,21 @@ flutter:
   uses-material-design: true
 
   assets:
-    - asset/img
+      - assets/img/
   
   fonts:
     - family: NotoSans
 
       fonts:
-        - asset: asset/fonts/NotoSansKR-Black.otf
+        - asset: asset/fonts/NotoSans-Black.ttf
           weight: 900
-        - asset: asset/fonts/NotoSansKR-Bold.otf
+        - asset: asset/fonts/NotoSans-Bold.ttf
           weight: 700
-        - asset: asset/fonts/NotoSansKR-Medium.otf
+        - asset: asset/fonts/NotoSans-Medium.ttf
           weight: 500
-        - asset: asset/fonts/NotoSansKR-Regular.otf
+        - asset: asset/fonts/NotoSans-Regular.ttf
           weight: 400
-        - asset: asset/fonts/NotoSansKR-Light.otf
+        - asset: asset/fonts/NotoSans-Light.ttf
           weight: 300
-        - asset: asset/fonts/NotoSansKR-Thin.otf
+        - asset: asset/fonts/NotoSans-Thin.ttf
           weight: 100
