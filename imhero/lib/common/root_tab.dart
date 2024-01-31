@@ -46,17 +46,7 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return DefaultLayout(
-      title: '코팩 딜리버리',
-      child: TabBarView(
-        physics: NeverScrollableScrollPhysics(),
-        controller: controller,
-        children: [
-          FlowerScreen(),
-          MapScreen(),
-          ChallengeScreen(),
-          ComunityScreen(),
-        ],
-      ),
+      title: 'IMHERO',
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: PRIMARY_COLOR,
         unselectedItemColor: BODY_TEXT_COLOR,
@@ -67,23 +57,33 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
           controller.animateTo(index);
         },
         currentIndex: index,
-        items: [
+        items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: '홈',
+            icon: Icon(Icons.local_florist),
+            label: 'My Flower',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.fastfood_outlined),
-            label: '음식',
+            icon: Icon(Icons.check_box_outlined),
+            label: 'Challenge',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.receipt_long_outlined),
-            label: '주문',
+            icon: Icon(Icons.location_on),
+            label: 'Map',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_outlined),
-            label: '프로필',
+            label: 'Talk',
           ),
+        ],
+      ),
+      child: TabBarView(
+        physics: const NeverScrollableScrollPhysics(),
+        controller: controller,
+        children: const [
+          FlowerScreen(),
+          MapScreen(),
+          ChallengeScreen(),
+          ComunityScreen(),
         ],
       ),
     );
