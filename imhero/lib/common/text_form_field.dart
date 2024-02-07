@@ -177,61 +177,55 @@ class SignupTextFormField extends StatelessWidget {
   }
 }
 
-class Signup2TextFormField extends StatelessWidget {
-  final String? hintText;
-  final String? errorText;
-  final bool obscureText;
-  final bool autofocus;
-  final ValueChanged<String>? onChanged;
 
-  const Signup2TextFormField({
-    required this.onChanged,
-    this.autofocus = false,
-    this.obscureText = false,
-    this.hintText,
-    this.errorText,
-    Key? key,
-  }) : super(key: key);
+// class Signup2TextFormField extends StatelessWidget {
+//   final String? hintText;
+//   final String? errorText;
+//   final bool obscureText;
+//   final bool autofocus;
+//   final ValueChanged<String>? onChanged;
 
-  @override
-  Widget build(BuildContext context) {
-    // double app_width = MediaQuery.of(context).size.width;
+//   const Signup2TextFormField({
+//     required this.onChanged,
+//     this.autofocus = false,
+//     this.obscureText = false,
+//     this.hintText,
+//     this.errorText,
+//     Key? key,
+//   }) : super(key: key);
 
-    final baseBorder = OutlineInputBorder(
-      borderSide: BorderSide(
-        color: Color(0xFFCBD2E0),
-        width: 2.0,
-      ),
-      borderRadius: BorderRadius.circular(5.0),
-    );
+//   @override
+//   Widget build(BuildContext context) {
+//     final baseBorder = OutlineInputBorder(
+//       borderSide: BorderSide(
+//         color: Color(0xFFCBD2E0),
+//         width: 2.0,
+//       ),
+//       borderRadius: BorderRadius.circular(5.0),
+//     );
 
-    return TextFormField(
-      style: const TextStyle(
-        color: Color(0xFFACCBC9),
-        fontSize: 16.0,
-      ),
-      // cursorColor: PRIMARY_COLOR,
-      // 비밀번호 입력할때
-      obscureText: obscureText,
-      autofocus: autofocus,
-      onChanged: onChanged,
+//     return TextFormField(
+//       style: const TextStyle(
+//         color: Color(0xFFACCBC9),
+//         fontSize: 16.0,
+//       ),
+//       obscureText: obscureText,
+//       autofocus: autofocus,
+//       onChanged: onChanged,
+//       decoration: InputDecoration(
+//         contentPadding: const EdgeInsets.fromLTRB(20, 6, 6, 6),
+//         hintText: hintText,
+//         errorText: errorText,
+//         hintStyle: const TextStyle(
+//           color: Color(0xFFABCBC8),
+//           fontSize: 16.0,
+//         ),
+//         fillColor: Color(0xFFEDF0F7),
+//         filled: true,
+//         border: baseBorder,
+//         enabledBorder: baseBorder,
+//       ),
+//     );
+//   }
+// }
 
-      decoration: InputDecoration(
-        contentPadding: const EdgeInsets.fromLTRB(20, 6, 6, 6),
-        hintText: hintText,
-        errorText: errorText,
-        hintStyle: const TextStyle(
-          color: Color(0xFFABCBC8),
-          fontSize: 16.0,
-        ),
-        fillColor: Color(0xFFEDF0F7),
-        // false - 배경색 없음
-        // true - 배경색 있음
-        filled: true,
-        // 모든 Input 상태의 기본 스타일 세팅
-        border: baseBorder,
-        enabledBorder: baseBorder,
-      ),
-    );
-  }
-}
