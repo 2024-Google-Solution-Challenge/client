@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:imhero/common/root_tab.dart';
+import 'package:imhero/login/splach_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -15,8 +15,8 @@ class MainApp extends StatelessWidget {
         fontFamily: 'NotoSans',
       ),
       debugShowCheckedModeBanner: false,
-      home: const Scaffold(
-        body: RootTab(),
+      home: Scaffold(
+        body: SplashScreen(),
       ),
     );
   }

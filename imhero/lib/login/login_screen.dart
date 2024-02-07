@@ -1,7 +1,15 @@
+import 'dart:ffi' hide Size;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:async/async.dart';
+import 'package:imhero/common/colors.dart';
+import 'package:imhero/common/layout.dart';
+import 'package:imhero/common/text_form_field.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:imhero/login/sign_up_screen.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -13,136 +21,191 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    double app_height = MediaQuery.of(context).size.height;
+    double app_width = MediaQuery.of(context).size.width;
+
+    return DefaultLayout(
+      child: SingleChildScrollView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        child: SafeArea(
+          top: true,
+          bottom: false,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: app_width * 0.1),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SizedBox(height: app_height * 0.05),
+
+                // logo
+                Image.asset(
+                  'assets/img/login_logo.png',
+                  width: MediaQuery.of(context).size.width / 3 * 2,
+                ),
+
+                SizedBox(height: app_height * 0.05),
+
+                // bar
+                Container(
+                  width: 320,
+                  decoration: ShapeDecoration(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        width: 1,
+                        strokeAlign: BorderSide.strokeAlignCenter,
+                        color: Color(0xFFCBD2E0),
+                      ),
+                    ),
+                  ),
+                ),
+
+                // login part
+                SizedBox(
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(
+                        app_width * 0.1, 25, app_width * 0.1, 20),
+                    child: Column(children: [
+                      LoginTextFormField(
+                        hintText: 'ID',
+                        autofocus: true,
+                        onChanged: (String value) {
+                          username = value;
+                        },
+                      ),
+                      const SizedBox(height: 12),
+                      LoginTextFormField(
+                        hintText: 'PW',
+                        autofocus: false,
+                        onChanged: (String value) {
+                          username = value;
+                        },
+                      ),
+                      const SizedBox(height: 12),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => SignUpScreen()));
+                              // print("sign up button");
+                            },
+                            style: ButtonStyle(
+                                padding: MaterialStateProperty.all<EdgeInsets>(
+                                    EdgeInsets.fromLTRB(app_width * 0.075, 10,
+                                        app_width * 0.075, 10)),
+                                shape: MaterialStateProperty.all(
+                                    RoundedRectangleBorder(
+                                        side: BorderSide(
+                                          color:
+                                              PRIMARY_COLOR, // your color here
+                                          width: 1,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(25)))),
+                            child: Text(
+                              'Sign up',
+                              style: TextStyle(color: PRIMARY_COLOR),
+                            ),
+                          ),
+                          SizedBox(
+                            width: app_width * 0.05,
+                          ),
+                          TextButton(
+                            onPressed: () {
+                              print('sign in button');
+                            },
+                            style: ButtonStyle(
+                                padding: MaterialStateProperty.all<EdgeInsets>(
+                                    EdgeInsets.fromLTRB(app_width * 0.075, 10,
+                                        app_width * 0.075, 10)),
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        PRIMARY_COLOR),
+                                shape: MaterialStateProperty.all(
+                                    RoundedRectangleBorder(
+                                        side: BorderSide(
+                                          color:
+                                              PRIMARY_COLOR, // your color here
+                                          width: 2,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(25)))),
+                            child: Text(
+                              'Sign in',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ]),
+                  ),
+                ),
+
+                // bar
+                Container(
+                  width: 320,
+                  decoration: ShapeDecoration(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        width: 1,
+                        strokeAlign: BorderSide.strokeAlignCenter,
+                        color: Color(0xFFCBD2E0),
+                      ),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 16.0),
+
+                // google login
+                SizedBox(
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(
+                        app_width * 0.12, 8, app_width * 0.12, 0),
+                    child: TextButton(
+                      onPressed: () {
+                        print('sign in button - google');
+                      },
+                      style: ButtonStyle(
+                          padding: MaterialStateProperty.all<EdgeInsets>(
+                              EdgeInsets.fromLTRB(
+                                  app_width * 0.01, 10, app_width * 0.01, 10)),
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(Colors.white),
+                          shape:
+                              MaterialStateProperty.all(RoundedRectangleBorder(
+                                  side: BorderSide(
+                                    color: Colors.black, // your color here
+                                    width: 1,
+                                  ),
+                                  borderRadius: BorderRadius.circular(30)))),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            'assets/img/google.png',
+                            width: MediaQuery.of(context).size.width / 15 * 1,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            'Sign in with Google',
+                            style: TextStyle(color: Colors.black, fontSize: 14),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
-  // Widget build(BuildContext context) {
-  //   final state = ref.watch(userMeProvider);
-
-  //   return DefaultLayout(
-  //     child: SingleChildScrollView(
-  //       keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-  //       child: SafeArea(
-  //         top: true,
-  //         bottom: false,
-  //         child: Padding(
-  //           padding: const EdgeInsets.symmetric(horizontal: 16.0),
-  //           child: Column(
-  //             crossAxisAlignment: CrossAxisAlignment.stretch,
-  //             children: [
-  //               _Title(),
-  //               const SizedBox(height: 16.0),
-  //               _SubTitle(),
-  //               Image.asset(
-  //                 'asset/img/misc/logo.png',
-  //                 width: MediaQuery.of(context).size.width / 3 * 2,
-  //               ),
-  //               CustomTextFormField(
-  //                 hintText: '이메일을 입력해주세요.',
-  //                 onChanged: (String value) {
-  //                   username = value;
-  //                 },
-  //               ),
-  //               const SizedBox(height: 16.0),
-  //               CustomTextFormField(
-  //                 hintText: '비밀번호를 입력해주세요.',
-  //                 onChanged: (String value) {
-  //                   password = value;
-  //                 },
-  //                 obscureText: true,
-  //               ),
-  //               const SizedBox(height: 16.0),
-  //               ElevatedButton(
-  //                 onPressed: state is UserModelLoading
-  //                     ? null
-  //                     : () async {
-  //                         ref.read(userMeProvider.notifier).login(
-  //                               username: username,
-  //                               password: password,
-  //                             );
-
-  //                         // ID:비밀번호
-  //                         // final rawString = '$username:$password';
-  //                         //
-  //                         // Codec<String, String> stringToBase64 = utf8.fuse(base64);
-  //                         //
-  //                         // String token = stringToBase64.encode(rawString);
-  //                         //
-  //                         // final resp = await dio.post(
-  //                         //   'http://$ip/auth/login',
-  //                         //   options: Options(
-  //                         //     headers: {
-  //                         //       'authorization': 'Basic $token',
-  //                         //     },
-  //                         //   ),
-  //                         // );
-  //                         //
-  //                         // final refreshToken = resp.data['refreshToken'];
-  //                         // final accessToken = resp.data['accessToken'];
-  //                         //
-  //                         // final storage = ref.read(secureStorageProvider);
-  //                         //
-  //                         // await storage.write(key: REFRESH_TOKEN_KEY, value: refreshToken);
-  //                         // await storage.write(key: ACCESS_TOKEN_KEY, value: accessToken);
-  //                         //
-  //                         // Navigator.of(context).push(
-  //                         //   MaterialPageRoute(
-  //                         //     builder: (_) => RootTab(),
-  //                         //   ),
-  //                         // );
-  //                       },
-  //                 style: ElevatedButton.styleFrom(
-  //                   primary: PRIMARY_COLOR,
-  //                 ),
-  //                 child: Text(
-  //                   '로그인',
-  //                 ),
-  //               ),
-  //               TextButton(
-  //                 onPressed: () async {},
-  //                 style: TextButton.styleFrom(
-  //                   primary: Colors.black,
-  //                 ),
-  //                 child: Text(
-  //                   '회원가입',
-  //                 ),
-  //               ),
-  //             ],
-  //           ),
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-// }
-
-// class _Title extends StatelessWidget {
-//   const _Title({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Text(
-//       '환영합니다!',
-//       style: TextStyle(
-//         fontSize: 34,
-//         fontWeight: FontWeight.w500,
-//         color: Colors.black,
-//       ),
-//     );
-//   }
-// }
-
-// class _SubTitle extends StatelessWidget {
-//   const _SubTitle({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Text(
-//       '이메일과 비밀번호를 입력해서 로그인 해주세요!\n오늘도 성공적인 주문이 되길 :)',
-//       style: TextStyle(
-//         fontSize: 16,
-//         color: BODY_TEXT_COLOR,
-//       ),
-//     );
-//   }
-// }
