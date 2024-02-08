@@ -22,7 +22,7 @@ class _FlowerScreenState extends State<FlowerScreen> {
           backgroundColor: Colors.transparent,
           body: Padding(
             padding: EdgeInsets.fromLTRB(
-                app_width * 0.07, app_height * 0.15, app_width * 0.07, 0),
+                app_width * 0.07, app_height * 0.1, app_width * 0.07, 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -68,7 +68,7 @@ class FlowerBackGround extends StatelessWidget {
       color: INPUT_BG_COLOR,
       child: Column(
         children: [
-          SizedBox(height: app_height * 0.5),
+          SizedBox(height: app_height * 0.4),
           Image.asset('assets/img/shelf.png'),
           SizedBox(height: app_height * 0.2),
           Image.asset('assets/img/shelf.png'),

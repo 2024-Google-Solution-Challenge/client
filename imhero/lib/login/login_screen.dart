@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:async/async.dart';
 import 'package:imhero/common/colors.dart';
 import 'package:imhero/common/layout.dart';
+import 'package:imhero/common/root_tab.dart';
 import 'package:imhero/common/text_form_field.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:imhero/login/sign_up_screen.dart';
@@ -119,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => FlowerScreen()));
+                                      builder: (context) => const RootTab()));
                               print('sign in button');
                             },
                             style: ButtonStyle(

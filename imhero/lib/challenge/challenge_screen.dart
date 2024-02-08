@@ -74,7 +74,7 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               DottedLine(
-                width: MediaQuery.of(context).size.width * 0.8,
+                width: double.maxFinite,
                 height: 1,
                 color: Colors.grey,
               ),
