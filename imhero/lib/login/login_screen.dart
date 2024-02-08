@@ -7,6 +7,7 @@ import 'package:imhero/common/layout.dart';
 import 'package:imhero/common/text_form_field.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:imhero/login/sign_up_screen.dart';
+import 'package:imhero/flower/flower_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -115,6 +116,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           TextButton(
                             onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => FlowerScreen()));
                               print('sign in button');
                             },
                             style: ButtonStyle(
