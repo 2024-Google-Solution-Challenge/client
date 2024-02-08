@@ -140,17 +140,89 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         TextButton(
                           onPressed: () {
                             if (_formkey.currentState!.validate()) {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => LoginScreen()));
-                              print('same password');
-                            }
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) => LoginScreen()));
+                              showDialog(
+                                context: context,
+                                barrierDismissible: true,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    backgroundColor: Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10.0)),
+                                    //Dialog Main Title
+                                    title: Column(
+                                      children: <Widget>[
+                                        Image.asset(
+                                          'assets/img/imhero.png',
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width /
+                                              3 *
+                                              2,
+                                        ),
+                                        new Text("Sign up Complete!!"),
+                                      ],
+                                    ),
+                                    content: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(
+                                          "Have a Good TIme in I'm Hero :)",
+                                        ),
+                                      ],
+                                    ),
+                                    actions: <Widget>[
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          TextButton(
+                                            child: Text(
+                                              "Sign in",
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                            style: ButtonStyle(
+                                              shape: MaterialStateProperty.all<
+                                                  RoundedRectangleBorder>(
+                                                RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          18.0),
+                                                  side: BorderSide(
+                                                      color: PRIMARY_COLOR),
+                                                ),
+                                              ),
+                                              backgroundColor:
+                                                  MaterialStateProperty.all<
+                                                      Color>(PRIMARY_COLOR),
+                                            ),
+                                            onPressed: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      LoginScreen(),
+                                                ),
+                                              );
+                                              print('same password');
+                                            },
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
 
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         builder: (context) => LoginScreen()));
+                              // print('same password');
+                            }
                             print('sign up - sign up page');
                           },
                           style: ButtonStyle(
@@ -243,3 +315,41 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 }
+
+// void FlutterDialog() {
+//   showDialog(
+//       context: context,
+//       //barrierDismissible - Dialog를 제외한 다른 화면 터치 x
+//       barrierDismissible: false,
+//       builder: (BuildContext context) {
+//         return AlertDialog(
+//           // RoundedRectangleBorder - Dialog 화면 모서리 둥글게 조절
+//           shape:
+//               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+//           //Dialog Main Title
+//           title: Column(
+//             children: <Widget>[
+//               new Text("Dialog Title"),
+//             ],
+//           ),
+//           //
+//           content: Column(
+//             mainAxisSize: MainAxisSize.min,
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: <Widget>[
+//               Text(
+//                 "Dialog Content",
+//               ),
+//             ],
+//           ),
+//           actions: <Widget>[
+//             new FlatButton(
+//               child: new Text("확인"),
+//               onPressed: () {
+//                 Navigator.pop(context);
+//               },
+//             ),
+//           ],
+//         );
+//       });
+// }
