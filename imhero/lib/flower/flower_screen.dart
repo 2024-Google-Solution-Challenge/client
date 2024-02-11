@@ -9,6 +9,9 @@ class FlowerScreen extends StatefulWidget {
 }
 
 class _FlowerScreenState extends State<FlowerScreen> {
+  final _sheet = GlobalKey();
+  final _controller = DraggableScrollableController();
+
   @override
   Widget build(BuildContext context) {
     double app_height = MediaQuery.of(context).size.height;
@@ -22,7 +25,7 @@ class _FlowerScreenState extends State<FlowerScreen> {
           backgroundColor: Colors.transparent,
           body: Padding(
             padding: EdgeInsets.fromLTRB(
-                app_width * 0.07, app_height * 0.1, app_width * 0.07, 0),
+                app_width * 0.07, app_height * 0.01, app_width * 0.07, 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -54,6 +57,86 @@ class _FlowerScreenState extends State<FlowerScreen> {
             ),
           ),
         ),
+        DraggableScrollableSheet(
+          key: _sheet,
+          initialChildSize: 0.06,
+          maxChildSize: 0.8,
+          minChildSize: 0.06,
+          expand: true,
+          snap: true,
+          snapSizes: const [0.5],
+          controller: _controller,
+          builder: (BuildContext context, ScrollController scrollController) {
+            return DecoratedBox(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black, // 그림자의 색 및 투명도 조절
+                    spreadRadius: 0.8,
+                    blurRadius: 10,
+                    offset: Offset(0, 3), // 그림자의 위치 조절
+                  ),
+                ],
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(25),
+                  topRight: Radius.circular(25),
+                ),
+              ),
+              child: CustomScrollView(
+                controller: scrollController,
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: Padding(
+                      padding:
+                          EdgeInsets.fromLTRB(0, 15, 0, 30), // 위쪽에 8픽셀의 패딩 추가
+                      child: FractionallySizedBox(
+                        widthFactor: 0.12, // 화면 너비의 절반 크기로 설정
+                        child: ClipRRect(
+                          borderRadius:
+                              BorderRadius.circular(10), // 원하는 둥근 모서리 반지름 값 설정
+                          child: Container(
+                            height: 6,
+                            color: PRIMARY_COLOR,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SliverList.list(
+                    children: const [
+                      Text('Content'),
+                    ],
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
+        // DraggableScrollableSheet(
+        //   initialChildSize: 0.05,
+        //   minChildSize: 0.05,
+        //   maxChildSize: 0.8,
+        //   builder: (BuildContext context, ScrollController scrollController) {
+        //     return Container(
+        //       decoration: BoxDecoration(
+        //         color: Colors.blue[100],
+        //         borderRadius: BorderRadius.only(
+        //           topLeft: Radius.circular(20.0), // 왼쪽 위 모서리 둥글게
+        //           topRight: Radius.circular(20.0), // 오른쪽 위 모서리 둥글게
+        //         ),
+        //       ),
+        //       // color: Colors.blue[100],
+        //       child: ListView.builder(
+        //         controller: scrollController,
+        //         itemCount: 25,
+        //         itemBuilder: (BuildContext context, int index) {
+        //           return ListTile(title: Text('Item $index'));
+        //         },
+        //       ),
+        //     );
+        //   },
+        // ),
       ],
     );
   }
@@ -68,9 +151,9 @@ class FlowerBackGround extends StatelessWidget {
       color: INPUT_BG_COLOR,
       child: Column(
         children: [
-          SizedBox(height: app_height * 0.4),
+          SizedBox(height: app_height * 0.35),
           Image.asset('assets/img/shelf.png'),
-          SizedBox(height: app_height * 0.2),
+          SizedBox(height: app_height * 0.22),
           Image.asset('assets/img/shelf.png'),
         ],
       ),
