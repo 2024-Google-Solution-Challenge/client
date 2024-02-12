@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imhero/common/colors.dart';
+import 'package:imhero/flower/flower_grow.dart';
 
 class FlowerScreen extends StatefulWidget {
   const FlowerScreen({Key? key}) : super(key: key);
@@ -25,38 +26,136 @@ class _FlowerScreenState extends State<FlowerScreen> {
           backgroundColor: Colors.transparent,
           body: Padding(
             padding: EdgeInsets.fromLTRB(
-                app_width * 0.07, app_height * 0.01, app_width * 0.07, 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                app_width * 0.07, 0, app_width * 0.07, app_height * 0.05),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                GetFlowerForm(
-                  image: 'assets/img/pinkflower.png',
-                  count: 2,
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      GetFlowerForm(
+                        image: 'assets/img/pinkflower.png',
+                        count: 2,
+                      ),
+                      GetFlowerForm(
+                        image: 'assets/img/skyblueflower.png',
+                        count: 2,
+                      ),
+                      GetFlowerForm(
+                        image: 'assets/img/yellowflower.png',
+                        count: 2,
+                      ),
+                      GetFlowerForm(
+                        image: 'assets/img/whiteflower.png',
+                        count: 2,
+                      ),
+                      GetFlowerForm(
+                        image: 'assets/img/purpleflower.png',
+                        count: 2,
+                      ),
+                      GetFlowerForm(
+                        image: 'assets/img/blueflower.png',
+                        count: 2,
+                      ),
+                    ],
+                  ),
                 ),
-                GetFlowerForm(
-                  image: 'assets/img/skyblueflower.png',
-                  count: 2,
+                SizedBox(height: app_height * 0.05), // 두 Row 사이 간격 조정
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      FlowerGrow(
+                        water: 'assets/img/waterpink.png',
+                        image1: 'assets/img/f3.png',
+                        image2: 'assets/img/f2.png',
+                        image3: 'assets/img/f3.png',
+                        image4: 'assets/img/f4.png',
+                      ),
+                      FlowerGrow(
+                        water: 'assets/img/waterpink.png',
+                        image1: 'assets/img/f1.png',
+                        image2: 'assets/img/f2.png',
+                        image3: 'assets/img/f3.png',
+                        image4: 'assets/img/f4.png',
+                      ),
+                      FlowerGrow(
+                        water: 'assets/img/waterpink.png',
+                        image1: 'assets/img/f1.png',
+                        image2: 'assets/img/f2.png',
+                        image3: 'assets/img/f3.png',
+                        image4: 'assets/img/f4.png',
+                      )
+                    ],
+                  ),
                 ),
-                GetFlowerForm(
-                  image: 'assets/img/yellowflower.png',
-                  count: 2,
+                SizedBox(
+                  height: app_height * 0.015,
                 ),
-                GetFlowerForm(
-                  image: 'assets/img/whiteflower.png',
-                  count: 2,
-                ),
-                GetFlowerForm(
-                  image: 'assets/img/purpleflower.png',
-                  count: 2,
-                ),
-                GetFlowerForm(
-                  image: 'assets/img/blueflower.png',
-                  count: 2,
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      FlowerGrow(
+                        water: 'assets/img/waterpink.png',
+                        image1: 'assets/img/f1.png',
+                        image2: 'assets/img/f2.png',
+                        image3: 'assets/img/f3.png',
+                        image4: 'assets/img/f4.png',
+                      ),
+                      FlowerGrow(
+                        water: 'assets/img/waterpink.png',
+                        image1: 'assets/img/f1.png',
+                        image2: 'assets/img/f2.png',
+                        image3: 'assets/img/f3.png',
+                        image4: 'assets/img/f4.png',
+                      ),
+                      FlowerGrow(
+                        water: 'assets/img/waterpink.png',
+                        image1: 'assets/img/f1.png',
+                        image2: 'assets/img/f2.png',
+                        image3: 'assets/img/f3.png',
+                        image4: 'assets/img/f4.png',
+                      )
+                    ],
+                  ),
                 ),
               ],
             ),
           ),
         ),
+        // SizedBox(
+        //   height: app_height * 0.3,
+        // ),
+        // SizedBox(
+        //     height: app_height * 0.3,
+        //     child: Row(
+        //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        //       children: [
+        //         FlowerGrow(
+        //           water: 'assets/img/waterpink.png',
+        //           image1: 'assets/img/f1.png',
+        //           image2: 'assets/img/f2.png',
+        //           image3: 'assets/img/f3.png',
+        //           image4: 'assets/img/f4.png',
+        //         ),
+        //         FlowerGrow(
+        //           water: 'assets/img/waterpink.png',
+        //           image1: 'assets/img/f1.png',
+        //           image2: 'assets/img/f2.png',
+        //           image3: 'assets/img/f3.png',
+        //           image4: 'assets/img/f4.png',
+        //         ),
+        //         FlowerGrow(
+        //           water: 'assets/img/waterpink.png',
+        //           image1: 'assets/img/f1.png',
+        //           image2: 'assets/img/f2.png',
+        //           image3: 'assets/img/f3.png',
+        //           image4: 'assets/img/f4.png',
+        //         )
+        //       ],
+        //     )),
         DraggableScrollableSheet(
           key: _sheet,
           initialChildSize: 0.06,
@@ -113,30 +212,6 @@ class _FlowerScreenState extends State<FlowerScreen> {
             );
           },
         ),
-        // DraggableScrollableSheet(
-        //   initialChildSize: 0.05,
-        //   minChildSize: 0.05,
-        //   maxChildSize: 0.8,
-        //   builder: (BuildContext context, ScrollController scrollController) {
-        //     return Container(
-        //       decoration: BoxDecoration(
-        //         color: Colors.blue[100],
-        //         borderRadius: BorderRadius.only(
-        //           topLeft: Radius.circular(20.0), // 왼쪽 위 모서리 둥글게
-        //           topRight: Radius.circular(20.0), // 오른쪽 위 모서리 둥글게
-        //         ),
-        //       ),
-        //       // color: Colors.blue[100],
-        //       child: ListView.builder(
-        //         controller: scrollController,
-        //         itemCount: 25,
-        //         itemBuilder: (BuildContext context, int index) {
-        //           return ListTile(title: Text('Item $index'));
-        //         },
-        //       ),
-        //     );
-        //   },
-        // ),
       ],
     );
   }
@@ -151,9 +226,9 @@ class FlowerBackGround extends StatelessWidget {
       color: INPUT_BG_COLOR,
       child: Column(
         children: [
-          SizedBox(height: app_height * 0.35),
+          SizedBox(height: app_height * 0.33),
           Image.asset('assets/img/shelf.png'),
-          SizedBox(height: app_height * 0.22),
+          SizedBox(height: app_height * 0.20),
           Image.asset('assets/img/shelf.png'),
         ],
       ),
