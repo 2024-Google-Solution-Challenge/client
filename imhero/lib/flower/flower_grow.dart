@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-// import 'package:imhero/common/colors.dart';
 class FlowerGrow extends StatefulWidget {
   final String? image1;
   final String? image2;
@@ -65,7 +64,7 @@ class _FlowerGrowState extends State<FlowerGrow> {
             ],
           ),
           Positioned(
-            bottom: 170,
+            bottom: app_height * 0.2,
             right: 0,
             child: Container(
               width: 23,
