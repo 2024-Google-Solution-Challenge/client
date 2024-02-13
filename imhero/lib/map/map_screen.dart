@@ -1,40 +1,74 @@
-import 'dart:async';
-import 'dart:ui';
+// import 'dart:async';
+// import 'dart:ui';
+
+// import 'package:flutter/material.dart';
+// import 'package:flutter/foundation.dart';
+// import 'package:flutter/services.dart';
+// import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart';
+// import 'package:google_maps_flutter/google_maps_flutter.dart';
+// import 'package:imhero/map/place.dart';
+
+// class MapScreen extends StatefulWidget {
+//   const MapScreen({Key? key}) : super(key: key);
+
+//   @override
+//   State<MapScreen> createState() => MapScreenState();
+// }
+
+// class MapScreenState extends State<MapScreen> {
+//   List<Place> items = [
+//     Place(name: 'place1', latLng: LatLng(37.590001, 127.027635))
+//   ];
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: GoogleMap(
+//         mapType: MapType.normal,
+//         initialCameraPosition: CameraPosition(
+//           target: LatLng(37.590001, 127.027635), // 고려대학교 좌표
+//           zoom: 15,
+//         ),
+//         onMapCreated: (GoogleMapController controller) {
+//           // 여기에서 지도 컨트롤러를 사용하여 지도를 제어할 수 있습니다.
+//         },
+//       ),
+//     );
+//   }
+// }
 
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:imhero/map/place.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
 
   @override
-  State<MapScreen> createState() => MapScreenState();
+  MapScreenState createState() => MapScreenState();
 }
 
 class MapScreenState extends State<MapScreen> {
-  List<Place> items = [
-    Place(name: 'place1', latLng: LatLng(37.590001, 127.027635))
-  ];
+  late GoogleMapController mapController;
+
+  final LatLng _initialPosition =
+      const LatLng(37.590001, 127.027635); // 초기 위치 설정
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: GoogleMap(
         mapType: MapType.normal,
         initialCameraPosition: CameraPosition(
-          target: LatLng(37.590001, 127.027635), // 고려대학교 좌표
+          target: _initialPosition,
           zoom: 15,
         ),
         onMapCreated: (GoogleMapController controller) {
-          // 여기에서 지도 컨트롤러를 사용하여 지도를 제어할 수 있습니다.
+          mapController = controller;
         },
       ),
     );
   }
 }
+
 
 //   late ClusterManager _manager;
 

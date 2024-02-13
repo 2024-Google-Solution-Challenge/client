@@ -46,12 +46,12 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>io.flutter.embedded_views_preview</key>
-	<string>YES</string>
+	<!-- <string>YES</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 	    <key>NSAllowsArbitraryLoads</key>
     	<true/>
-	</dict>
+	</dict> -->
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app needs access to location when open.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
