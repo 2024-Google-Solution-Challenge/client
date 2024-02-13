@@ -188,10 +188,25 @@ class _FlowerScreenState extends State<FlowerScreen> {
                               fontWeight: FontWeight.w700,
                             ),
                           ),
-                          SizedBox(height: 10),
+                          SizedBox(height: 15),
                           Todo(
                             todo_title: 'first',
                             todo_content: '일회용품 사용 줄이기',
+                          ),
+                          SizedBox(height: 10),
+                          Todo(
+                            todo_title: 'second',
+                            todo_content: '재활용 하기',
+                          ),
+                          SizedBox(height: 10),
+                          Todo(
+                            todo_title: 'third',
+                            todo_content: '플로깅 하기',
+                          ),
+                          SizedBox(height: 10),
+                          Todo(
+                            todo_title: 'forth',
+                            todo_content: '텀블러 사용하기',
                           ),
                         ],
                       ),
