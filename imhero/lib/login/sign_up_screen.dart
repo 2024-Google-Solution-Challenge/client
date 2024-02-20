@@ -1,5 +1,3 @@
-// import 'dart:ffi';
-
 import "package:flutter/material.dart";
 import 'package:async/async.dart';
 import 'package:imhero/common/colors.dart';
@@ -53,7 +51,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   //bar
                   Container(
                     width: 320,
-                    decoration: ShapeDecoration(
+                    decoration: const ShapeDecoration(
                       shape: RoundedRectangleBorder(
                         side: BorderSide(
                           width: 1,

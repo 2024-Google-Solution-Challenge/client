@@ -1,5 +1,4 @@
 // import 'dart:ffi' hide Size;
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:async/async.dart';
 import 'package:imhero/common/colors.dart';
@@ -8,7 +7,6 @@ import 'package:imhero/common/root_tab.dart';
 import 'package:imhero/common/text_form_field.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:imhero/login/sign_up_screen.dart';
-import 'package:imhero/flower/flower_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -50,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 // bar
                 Container(
                   width: 320,
-                  decoration: ShapeDecoration(
+                  decoration: const ShapeDecoration(
                     shape: RoundedRectangleBorder(
                       side: BorderSide(
                         width: 1,
@@ -91,7 +89,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => SignUpScreen()));
+                                      builder: (context) =>
+                                          const SignUpScreen()));
                               // print("sign up button");
                             },
                             style: ButtonStyle(
@@ -100,14 +99,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                         app_width * 0.075, 10)),
                                 shape: MaterialStateProperty.all(
                                     RoundedRectangleBorder(
-                                        side: BorderSide(
+                                        side: const BorderSide(
                                           color:
                                               PRIMARY_COLOR, // your color here
                                           width: 1,
                                         ),
                                         borderRadius:
                                             BorderRadius.circular(25)))),
-                            child: Text(
+                            child: const Text(
                               'Sign up',
                               style: TextStyle(color: PRIMARY_COLOR),
                             ),
@@ -132,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         PRIMARY_COLOR),
                                 shape: MaterialStateProperty.all(
                                     RoundedRectangleBorder(
-                                        side: BorderSide(
+                                        side: const BorderSide(
                                           color:
                                               PRIMARY_COLOR, // your color here
                                           width: 2,
@@ -153,7 +152,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 // bar
                 Container(
                   width: 320,
-                  decoration: ShapeDecoration(
+                  decoration: const ShapeDecoration(
                     shape: RoundedRectangleBorder(
                       side: BorderSide(
                         width: 1,
@@ -183,7 +182,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               MaterialStateProperty.all<Color>(Colors.white),
                           shape:
                               MaterialStateProperty.all(RoundedRectangleBorder(
-                                  side: BorderSide(
+                                  side: const BorderSide(
                                     color: Colors.black, // your color here
                                     width: 1,
                                   ),
@@ -195,10 +194,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             'assets/img/google.png',
                             width: MediaQuery.of(context).size.width / 15 * 1,
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
-                          Text(
+                          const Text(
                             'Sign in with Google',
                             style: TextStyle(color: Colors.black, fontSize: 14),
                           ),

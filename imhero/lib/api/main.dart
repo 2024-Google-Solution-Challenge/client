@@ -1,18 +1,18 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:practice/challenge.dart';
-import 'package:practice/community.dart';
-import 'package:practice/post_create.dart';
-import 'package:practice/firebase_options.dart';
-import 'package:practice/home.dart';
-import 'package:practice/login.dart';
-import 'package:practice/map.dart';
-import 'package:practice/post_delete.dart';
-import 'package:practice/post_detail.dart';
-import 'package:practice/post_edit.dart';
-import 'package:practice/signup.dart';
-import 'package:practice/user_detail.dart';
-import 'package:practice/user_edit.dart';
+import '../common/firebase_options.dart';
+import './challenge.dart';
+import './community.dart';
+import './post_create.dart';
+import './home.dart';
+import './login.dart';
+import './map.dart';
+import './post_delete.dart';
+import './post_detail.dart';
+import './post_edit.dart';
+import './signup.dart';
+import './user_detail.dart';
+import './user_edit.dart';
 import 'package:routemaster/routemaster.dart';
 
 Future<void> main() async {
