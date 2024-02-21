@@ -69,117 +69,129 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 // login part
                 SizedBox(
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(
-                        app_width * 0.1, 25, app_width * 0.1, 20),
-                    child: Column(children: [
-                      // LoginTextFormField(
-                      //   hintText: 'ID',
-                      //   autofocus: true,
-                      //   onChanged: (String value) {
-                      //     username = value;
-                      //   },
-                      // ),
-                      emailInput(),
-                      const SizedBox(height: 12),
-                      // LoginTextFormField(
-                      //   hintText: 'PW',
-                      //   autofocus: false,
-                      //   onChanged: (String value) {
-                      //     username = value;
-                      //   },
-                      // ),
-                      passwordInput(),
-                      const SizedBox(height: 12),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const SignUpScreen()));
-                              // print("sign up button");
-                            },
-                            style: ButtonStyle(
-                                padding: MaterialStateProperty.all<EdgeInsets>(
-                                    EdgeInsets.fromLTRB(app_width * 0.075, 10,
-                                        app_width * 0.075, 10)),
-                                shape: MaterialStateProperty.all(
-                                    RoundedRectangleBorder(
-                                        side: const BorderSide(
-                                          color:
-                                              PRIMARY_COLOR, // your color here
-                                          width: 1,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(25)))),
-                            child: const Text(
-                              'Sign up',
-                              style: TextStyle(color: PRIMARY_COLOR),
+                  child: Form(
+                    key: _key,
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          app_width * 0.1, 25, app_width * 0.1, 20),
+                      child: Column(children: [
+                        // LoginTextFormField(
+                        //   hintText: 'ID',
+                        //   autofocus: true,
+                        //   onChanged: (String value) {
+                        //     username = value;
+                        //   },
+                        // ),
+                        emailInput(),
+                        const SizedBox(height: 12),
+                        // LoginTextFormField(
+                        //   hintText: 'PW',
+                        //   autofocus: false,
+                        //   onChanged: (String value) {
+                        //     username = value;
+                        //   },
+                        // ),
+                        passwordInput(),
+                        const SizedBox(height: 12),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const SignUpScreen()));
+                                // print("sign up button");
+                              },
+                              style: ButtonStyle(
+                                  padding:
+                                      MaterialStateProperty.all<EdgeInsets>(
+                                          EdgeInsets.fromLTRB(app_width * 0.075,
+                                              10, app_width * 0.075, 10)),
+                                  shape: MaterialStateProperty.all(
+                                      RoundedRectangleBorder(
+                                          side: const BorderSide(
+                                            color:
+                                                PRIMARY_COLOR, // your color here
+                                            width: 1,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(25)))),
+                              child: const Text(
+                                'Sign up',
+                                style: TextStyle(color: PRIMARY_COLOR),
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            width: app_width * 0.05,
-                          ),
-                          TextButton(
-                            onPressed: () async {
-                              if (_key.currentState!.validate()) {
-                                // 여기에 작성
-                                try {
-                                  UserCredential authResult = await FirebaseAuth
-                                      .instance
-                                      .signInWithEmailAndPassword(
-                                    email: _emailController.text,
-                                    password: _pwdController.text,
-                                  );
+                            SizedBox(
+                              width: app_width * 0.05,
+                            ),
+                            TextButton(
+                              onPressed: () async {
+                                if (_key.currentState!.validate()) {
+                                  // 여기에 작성
+                                  try {
+                                    UserCredential authResult =
+                                        await FirebaseAuth.instance
+                                            .signInWithEmailAndPassword(
+                                      email: _emailController.text,
+                                      password: _pwdController.text,
+                                    );
 
-                                  if (authResult.user != null) {
-                                    Routemaster.of(context).push('/');
-                                  }
-                                } on FirebaseAuthException catch (e) {
-                                  if (e.code == 'user-not-found') {
-                                    debugPrint('No user found for that email.');
-                                  } else if (e.code == 'wrong-password') {
-                                    debugPrint(
-                                        'Wrong password provided for that user.');
+                                    if (authResult.user != null) {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const RootTab()));
+                                      print('sign in button');
+                                      // Routemaster.of(context).push('/');
+                                    }
+                                  } on FirebaseAuthException catch (e) {
+                                    if (e.code == 'user-not-found') {
+                                      debugPrint(
+                                          'No user found for that email.');
+                                    } else if (e.code == 'wrong-password') {
+                                      debugPrint(
+                                          'Wrong password provided for that user.');
+                                    }
                                   }
                                 }
-                              }
-                            },
-                            // onPressed: () {
-                            //   Navigator.push(
-                            //       context,
-                            //       MaterialPageRoute(
-                            //           builder: (context) => const RootTab()));
-                            //   print('sign in button');
-                            // },
-                            style: ButtonStyle(
-                                padding: MaterialStateProperty.all<EdgeInsets>(
-                                    EdgeInsets.fromLTRB(app_width * 0.075, 10,
-                                        app_width * 0.075, 10)),
-                                backgroundColor:
-                                    MaterialStateProperty.all<Color>(
-                                        PRIMARY_COLOR),
-                                shape: MaterialStateProperty.all(
-                                    RoundedRectangleBorder(
-                                        side: const BorderSide(
-                                          color:
-                                              PRIMARY_COLOR, // your color here
-                                          width: 2,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(25)))),
-                            child: Text(
-                              'Sign in',
-                              style: TextStyle(color: Colors.white),
+                              },
+                              // onPressed: () {
+                              //   Navigator.push(
+                              //       context,
+                              //       MaterialPageRoute(
+                              //           builder: (context) => const RootTab()));
+                              //   print('sign in button');
+                              // },
+                              style: ButtonStyle(
+                                  padding:
+                                      MaterialStateProperty.all<EdgeInsets>(
+                                          EdgeInsets.fromLTRB(app_width * 0.075,
+                                              10, app_width * 0.075, 10)),
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          PRIMARY_COLOR),
+                                  shape: MaterialStateProperty.all(
+                                      RoundedRectangleBorder(
+                                          side: const BorderSide(
+                                            color:
+                                                PRIMARY_COLOR, // your color here
+                                            width: 2,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(25)))),
+                              child: Text(
+                                'Sign in',
+                                style: TextStyle(color: Colors.white),
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ]),
+                          ],
+                        ),
+                      ]),
+                    ),
                   ),
                 ),
 
