@@ -19,6 +19,7 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final _formkey = GlobalKey<FormState>();
+  final TextEditingController _nickController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _pwdController = TextEditingController();
 
@@ -77,7 +78,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         SignupTextFormField(
                           hintText: 'Nick Name',
                           autofocus: true,
-                          inputcontroller: _emailController,
+                          inputcontroller: _nickController,
                           onChanged: (String value) {
                             _nickname = value;
                           },
@@ -86,6 +87,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         SignupTextFormField(
                           hintText: 'ID',
                           autofocus: false,
+                          inputcontroller: _emailController,
                           onChanged: (String value) {
                             _username = value;
                           },
@@ -233,7 +235,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 .set({
               // 'name', 'email', 등 사용자 정보를 추가할 수 있습니다.
               'email': _emailController.text,
-              'name': _emailController.text.split('@')[0],
+              'name': _nickController.text,
               'level': 1,
               'progress': 0,
               'profile_image': "",
