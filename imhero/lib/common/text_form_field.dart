@@ -124,6 +124,7 @@ class SignupTextFormField extends StatelessWidget {
   final bool obscureText;
   final bool autofocus;
   final ValueChanged<String>? onChanged;
+  final TextEditingController? inputcontroller;
 
   const SignupTextFormField({
     required this.onChanged,
@@ -131,6 +132,7 @@ class SignupTextFormField extends StatelessWidget {
     this.obscureText = false,
     this.hintText,
     this.errorText,
+    this.inputcontroller,
     Key? key,
   }) : super(key: key);
 
@@ -156,6 +158,7 @@ class SignupTextFormField extends StatelessWidget {
       obscureText: obscureText,
       autofocus: autofocus,
       onChanged: onChanged,
+      controller: inputcontroller,
 
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.fromLTRB(20, 6, 6, 6),
