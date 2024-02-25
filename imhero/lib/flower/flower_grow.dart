@@ -10,7 +10,9 @@ class FlowerGrow extends StatefulWidget {
   final String? image4;
   final String? image5;
   final String? water;
-  final int? countwater; // 추가: 버튼 활성화 여부 결정을 위한 count 변수
+  final int? countwater;
+  final Color? colorwater;
+  final int? flowernum;
 
   const FlowerGrow({
     this.image1,
@@ -20,6 +22,8 @@ class FlowerGrow extends StatefulWidget {
     this.image5,
     this.water,
     this.countwater,
+    this.colorwater,
+    this.flowernum,
     Key? key,
   }) : super(key: key);
 
@@ -50,11 +54,18 @@ class _FlowerGrowState extends State<FlowerGrow> {
     setState(() {
       _currentImageIndex = (_currentImageIndex + 1) % _images.length;
       if (_currentImageIndex == 4) {
-        // _currentImageIndex가 5가 되면 'flower1'의 값을 증가시킴
-        // 현재 사용자 데이터에 접근하여 해당 값을 업데이트합니다.
         FirebaseFirestore.instance.collection('Users').doc(userId).update({
-          'user_flower_counts.flower1': FieldValue.increment(1),
+          'user_flower_counts.flower$flowernum': FieldValue.increment(1),
         });
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              actions: [],
+              // AlertDialog 내용 추가
+            );
+          },
+        );
       }
       _count--; // count 값을 감소시킴
     });
@@ -91,7 +102,7 @@ class _FlowerGrowState extends State<FlowerGrow> {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: _count > 0
-                    ? const Color(0xFFFE5C96)
+                    ? widget.colorwater //const Color(0xFFFE5C96)
                     : Colors.grey[500], // count 값으로 버튼 색상 결정
               ),
               child: Center(
