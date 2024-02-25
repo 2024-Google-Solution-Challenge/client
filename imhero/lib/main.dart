@@ -3,6 +3,7 @@ import 'package:imhero/login/splach_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:imhero/map/map_screen.dart';
+import 'package:imhero/common/root_tab.dart';
 
 void main() async {
   await Firebase.initializeApp(
@@ -21,8 +22,9 @@ class MainApp extends StatelessWidget {
         fontFamily: 'NotoSans',
       ),
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: MapScreen(),
+      home: const Scaffold(
+        //body: MapScreen(),
+        body: RootTab(),
       ),
     );
   }

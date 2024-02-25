@@ -74,11 +74,11 @@ class MapScreenState extends State<MapScreen> {
             top: app_height * 0.01,
             child: AdvancedSwitch(
               controller: _controllerswitch,
-              activeChild: Icon(
+              activeChild: const Icon(
                 Icons.view_list_rounded,
                 color: Colors.white,
               ),
-              inactiveChild: Icon(
+              inactiveChild: const Icon(
                 Icons.location_on_outlined,
               ),
               activeColor: PRIMARY_COLOR,
@@ -86,6 +86,10 @@ class MapScreenState extends State<MapScreen> {
               width: 60,
             ),
           ),
+          Positioned(
+              left: MediaQuery.of(context).size.width / 2 - 120,
+              bottom: 10,
+              child: floatingButton("Create new challenge", 240, () {})),
         ],
       ),
     );
@@ -117,9 +121,9 @@ class MapScreenState extends State<MapScreen> {
       ),
       child: Column(
         children: [
-          SizedBox(height: 80),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
+          const SizedBox(height: 80),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(20, 20, 20, 10),
             child: SizedBox(
               width: double.infinity,
               child: Text(
@@ -199,7 +203,7 @@ class MapScreenState extends State<MapScreen> {
                       color: Colors.grey.withOpacity(0.5), // 그림자 색상 및 투명도 설정
                       spreadRadius: 2, // 그림자 확장 반경 설정
                       blurRadius: 5, // 그림자 흐림 정도 설정
-                      offset: Offset(0, 3), // 그림자 위치 설정
+                      offset: const Offset(0, 3), // 그림자 위치 설정
                     ),
                   ],
                 ),

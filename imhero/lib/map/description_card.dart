@@ -24,45 +24,45 @@ class _DescripCardState extends State<DescriptionCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           // Title
           Text(
             widget.title,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(height: 8.0),
+          const SizedBox(height: 8.0),
           // Description
           Expanded(
             child: SingleChildScrollView(
               child: Text(
                 widget.description,
-                style: TextStyle(fontSize: 16.0),
+                style: const TextStyle(fontSize: 16.0),
               ),
             ),
           ),
-          SizedBox(height: 8.0),
+          const SizedBox(height: 8.0),
           // Contrib
           Row(
             children: [
               Text(
                 'Contributors: ${widget.contrib}',
-                style: TextStyle(fontSize: 16.0),
+                style: const TextStyle(fontSize: 16.0),
               ),
-              Spacer(),
+              const Spacer(),
               ElevatedButton(
                 onPressed: () {
                   // Handle join button press
                 },
-                child: Text('Join'),
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(PRIMARY_COLOR),
                 ),
+                child: const Text('Join'),
               ),
             ],
           ),

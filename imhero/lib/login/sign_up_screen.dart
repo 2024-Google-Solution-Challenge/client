@@ -278,7 +278,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         'assets/img/imhero.png',
                         width: MediaQuery.of(context).size.width / 3 * 2,
                       ),
-                      new Text("Sign up Complete!!"),
+                      const Text("Sign up Complete!!"),
                     ],
                   ),
                   content: const Column(
@@ -295,10 +295,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         TextButton(
-                          child: Text(
-                            "Sign in",
-                            style: const TextStyle(color: Colors.white),
-                          ),
                           style: ButtonStyle(
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(
@@ -309,6 +305,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ),
                             backgroundColor:
                                 MaterialStateProperty.all<Color>(PRIMARY_COLOR),
+                          ),
+                          child: const Text(
+                            "Sign in",
+                            style: TextStyle(color: Colors.white),
                           ),
                           onPressed: () {
                             Navigator.push(

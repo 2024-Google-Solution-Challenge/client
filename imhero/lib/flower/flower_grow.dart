@@ -72,13 +72,13 @@ class _FlowerGrowState extends State<FlowerGrow> {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: _count > 0
-                    ? Color(0xFFFE5C96)
+                    ? const Color(0xFFFE5C96)
                     : Colors.grey[500], // count 값으로 버튼 색상 결정
               ),
               child: Center(
                 child: Text(
                   '$_count', // count 값으로 버튼 텍스트 설정
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 12,
                     color: Colors.white,
                     fontWeight: FontWeight.bold,

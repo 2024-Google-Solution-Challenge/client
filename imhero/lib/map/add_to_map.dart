@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:imhero/common/layout.dart';
 
-Widget addTextToCommunity() {
+Widget addChallengeToMap() {
   return Container(
-    child: Text('Add Text to Community'),
+    child: const Text('Add Challenge to Map'),
   );
 }

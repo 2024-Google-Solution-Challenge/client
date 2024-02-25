@@ -24,7 +24,7 @@ class _TogetherCardState extends State<TogetherCard> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(6),
-        border: Border(
+        border: const Border(
           bottom: BorderSide(
             color: PRIMARY_COLOR, // 테두리 색상
             width: 2.0, // 테두리 너비

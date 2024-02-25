@@ -20,10 +20,10 @@ class DefaultLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor ?? BACKGROUND,
+      backgroundColor: backgroundColor ?? BACKGROUND_COLOR,
       appBar: renderAppBar(),
       body: child,
-      bottomNavigationBar: bottomNavigationBar,
+      bottomNavigationBar: SizedBox(height: 70.0, child: bottomNavigationBar),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
@@ -33,7 +33,7 @@ class DefaultLayout extends StatelessWidget {
       return null;
     } else {
       return AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: BACKGROUND_COLOR,
         elevation: 0,
         title: Text(
           title!,
