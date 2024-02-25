@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imhero/common/colors.dart';
 
 class DefaultLayout extends StatelessWidget {
   final Color? backgroundColor;
@@ -21,7 +22,7 @@ class DefaultLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backgroundColor ?? Colors.white,
+      backgroundColor: backgroundColor ?? BACKGROUND,
       appBar: renderAppBar(),
       body: child,
       bottomNavigationBar: bottomNavigationBar,

@@ -18,7 +18,7 @@ class GetFlowerForm extends StatelessWidget {
 
     final baseBorder = BoxDecoration(
       border: Border.all(
-        color: Color(0xFFD3B592),
+        color: const Color(0xFFD3B592),
         width: 3.0,
       ),
       borderRadius: BorderRadius.circular(12),
@@ -32,10 +32,10 @@ class GetFlowerForm extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(image!),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text(
             count.toString(),
-            style: TextStyle(
+            style: const TextStyle(
               color: TEXT_COLOR,
               fontSize: 12,
               fontWeight: FontWeight.bold,

@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'package:flutter/material.dart';
 
 // 주색상
@@ -15,3 +17,4 @@ const BACKGROUND_COLOR = Color(0xFFF9F9F9);
 const INPUT_BORDER_COLOR = Color(0xFFF3F2F2);
 
 const TEXT_COLOR = Color(0xFF13413E);
+const BACKGROUND = Color(0xFFF9F9F9);

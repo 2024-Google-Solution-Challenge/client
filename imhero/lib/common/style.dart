@@ -11,3 +11,19 @@ TextStyle underLineTextStyle() {
     decorationThickness: 5,
   );
 }
+
+Widget bottomNavigationCircle() {
+  return Container(
+    width: 20,
+    height: 20,
+    decoration: const BoxDecoration(
+      shape: BoxShape.circle,
+      gradient: LinearGradient(
+        colors: [
+          Color(0xffE6D7FF),
+          Color(0xffDCFFE8),
+        ],
+      ),
+    ),
+  );
+}

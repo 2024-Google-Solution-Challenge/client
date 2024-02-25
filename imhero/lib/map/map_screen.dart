@@ -88,7 +88,7 @@ class MapScreenState extends State<MapScreen> {
                   latLng: LatLng(48.858265 + i * 0.01, 2.350107))
           ]);
         },
-        child: Icon(Icons.update),
+        child: const Icon(Icons.update),
       ),
     );
   }

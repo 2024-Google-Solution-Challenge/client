@@ -115,17 +115,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               color: Color(0xFFABCBC8),
                               fontSize: 16.0,
                             ),
-                            fillColor: Color(0xFFEDF0F7),
+                            fillColor: const Color(0xFFEDF0F7),
                             filled: true,
                             border: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0xFFCBD2E0),
                                 width: 2.0,
                               ),
                               borderRadius: BorderRadius.circular(5.0),
                             ),
                             enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0xFFCBD2E0),
                                 width: 2.0,
                               ),
@@ -153,7 +153,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   //bar
                   Container(
                     width: 320,
-                    decoration: ShapeDecoration(
+                    decoration: const ShapeDecoration(
                       shape: RoundedRectangleBorder(
                         side: BorderSide(
                           width: 1,
@@ -163,7 +163,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 12,
                   ),
                   // google login
@@ -183,7 +183,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 MaterialStateProperty.all<Color>(Colors.white),
                             shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
-                                    side: BorderSide(
+                                    side: const BorderSide(
                                       color: Colors.black, // your color here
                                       width: 1,
                                     ),
@@ -195,10 +195,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               'assets/img/google.png',
                               width: MediaQuery.of(context).size.width / 15 * 1,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10,
                             ),
-                            Text(
+                            const Text(
                               'Sign in with Google',
                               style:
                                   TextStyle(color: Colors.black, fontSize: 14),
@@ -281,7 +281,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       new Text("Sign up Complete!!"),
                     ],
                   ),
-                  content: Column(
+                  content: const Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
@@ -297,14 +297,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         TextButton(
                           child: Text(
                             "Sign in",
-                            style: TextStyle(color: Colors.white),
+                            style: const TextStyle(color: Colors.white),
                           ),
                           style: ButtonStyle(
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(18.0),
-                                side: BorderSide(color: PRIMARY_COLOR),
+                                side: const BorderSide(color: PRIMARY_COLOR),
                               ),
                             ),
                             backgroundColor:
@@ -314,7 +314,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => LoginScreen(),
+                                builder: (context) => const LoginScreen(),
                               ),
                             );
                             print('same password');
@@ -345,12 +345,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
               EdgeInsets.fromLTRB(app_width * 0.23, 12, app_width * 0.23, 12)),
           backgroundColor: MaterialStateProperty.all<Color>(TEXT_COLOR),
           shape: MaterialStateProperty.all(RoundedRectangleBorder(
-              side: BorderSide(
+              side: const BorderSide(
                 color: Colors.black, // your color here
                 width: 1,
               ),
               borderRadius: BorderRadius.circular(30)))),
-      child: Text(
+      child: const Text(
         'Sign up',
         style: TextStyle(color: Colors.white, fontSize: 14),
       ),
