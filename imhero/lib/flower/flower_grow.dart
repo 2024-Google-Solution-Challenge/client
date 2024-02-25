@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:routemaster/routemaster.dart';
+import 'package:imhero/flower/share_alert.dart';
 
 class FlowerGrow extends StatefulWidget {
   final String? image1;
@@ -61,10 +61,7 @@ class _FlowerGrowState extends State<FlowerGrow> {
         showDialog(
           context: context,
           builder: (BuildContext context) {
-            return AlertDialog(
-              actions: [],
-              // AlertDialog 내용 추가
-            );
+            return shareAlert(context, widget.flowernum!);
           },
         );
       }

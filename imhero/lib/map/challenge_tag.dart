@@ -5,7 +5,7 @@ import 'package:imhero/common/colors.dart';
 class TogetherCard extends StatefulWidget {
   final String title;
   final String description;
-  TogetherCard({
+  const TogetherCard({
     Key? key,
     required this.title,
     required this.description,

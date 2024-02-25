@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:imhero/community/community_screen.dart';
 import 'package:imhero/common/root_tab.dart';
+import 'package:imhero/flower/share_alert.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,6 +28,7 @@ class MainApp extends StatelessWidget {
       home: Scaffold(
         //body: CommunityScreen(),
         body: SplashScreen(),
+        //body: shareAlert(context, 1)
       ),
     );
   }
