@@ -216,13 +216,7 @@ class AddChallengeToMapState extends State<AddChallengeToMap> {
                 height: 20,
               ),
               postButton(
-                "Add Challenge",
-                300,
-                false,
-                () {
-                  
-                },
-              )
+                  "Add Challenge", 300, false, () => widget.onBackButtonPress())
             ],
           ),
         ),
