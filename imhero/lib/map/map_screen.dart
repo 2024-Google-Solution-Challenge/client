@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:imhero/map/add_to_map.dart';
 import 'package:imhero/map/place.dart';
 import 'package:imhero/map/challenge_tag.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +34,7 @@ class MapScreenState extends State<MapScreen> {
 
   final _controllerswitch = ValueNotifier<bool>(false);
   bool _checked = false;
+  bool createButton = false;
 
   @override
   void initState() {
@@ -66,33 +68,43 @@ class MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     double app_height = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Stack(
-        children: [
-          if (!_controllerswitch.value) buildMap(),
-          if (_controllerswitch.value) buildList(),
-          Positioned(
-            left: 16,
-            top: app_height * 0.01,
-            child: AdvancedSwitch(
-              controller: _controllerswitch,
-              activeChild: const Icon(
-                Icons.view_list_rounded,
-                color: Colors.white,
-              ),
-              inactiveChild: const Icon(
-                Icons.location_on_outlined,
-              ),
-              activeColor: PRIMARY_COLOR,
-              inactiveColor: PRIMARY_COLOR,
-              width: 60,
+      body: createButton
+          ? addChallengeToMap(() {
+              setState(() {
+                createButton = false;
+              });
+            })
+          : Stack(
+              children: [
+                if (!_controllerswitch.value) buildMap(),
+                if (_controllerswitch.value) buildList(),
+                Positioned(
+                  left: 16,
+                  top: app_height * 0.01,
+                  child: AdvancedSwitch(
+                    controller: _controllerswitch,
+                    activeChild: const Icon(
+                      Icons.view_list_rounded,
+                      color: Colors.white,
+                    ),
+                    inactiveChild: const Icon(
+                      Icons.location_on_outlined,
+                    ),
+                    activeColor: PRIMARY_COLOR,
+                    inactiveColor: PRIMARY_COLOR,
+                    width: 60,
+                  ),
+                ),
+                Positioned(
+                    left: MediaQuery.of(context).size.width / 2 - 120,
+                    bottom: 10,
+                    child: floatingButton("Create new challenge", 240, () {
+                      setState(() {
+                        createButton = true;
+                      });
+                    })),
+              ],
             ),
-          ),
-          Positioned(
-              left: MediaQuery.of(context).size.width / 2 - 120,
-              bottom: 10,
-              child: floatingButton("Create new challenge", 240, () {})),
-        ],
-      ),
     );
   }
 

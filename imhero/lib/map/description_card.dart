@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:imhero/common/colors.dart';
 
 class DescriptionCard extends StatefulWidget {
@@ -8,7 +7,7 @@ class DescriptionCard extends StatefulWidget {
   final int contrib;
   final int card;
 
-  DescriptionCard({
+  const DescriptionCard({
     Key? key,
     required this.title,
     required this.description,
