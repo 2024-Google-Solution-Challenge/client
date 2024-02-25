@@ -23,6 +23,7 @@ dependencies:
   firebase_storage: ^11.6.6
   file_picker: ^6.1.1
   path_provider: ^2.1.2
+  rolling_switch: ^0.0.2
 
 dev_dependencies:
     flutter_test:

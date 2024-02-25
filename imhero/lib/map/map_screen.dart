@@ -7,6 +7,7 @@ import 'package:imhero/map/place.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart';
+import 'package:rolling_switch/rolling_switch.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -18,6 +19,7 @@ class MapScreen extends StatefulWidget {
 class MapScreenState extends State<MapScreen> {
   late ClusterManager _manager;
   late GoogleMapController mapController;
+  bool isMapMode = true;
 
   Set<Marker> markers = Set();
 
@@ -50,19 +52,33 @@ class MapScreenState extends State<MapScreen> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GoogleMap(
-          mapType: MapType.normal,
-          initialCameraPosition: CameraPosition(
-            target: _initialPosition,
-            zoom: 16,
+      body: Stack(
+        children: [
+          if (isMapMode) buildMap(),
+          if (!isMapMode) buildList(),
+          Positioned(
+            left: 16,
+            top: 16,
+            child: RollingSwitch.icon(
+              onChanged: (bool state) {
+                print('turned ${(state) ? 'on' : 'off'}');
+                setState(() {
+                  isMapMode = !state; // 상태에 따라 맵 모드 또는 리스트 모드로 전환
+                });
+              },
+              rollingInfoRight: const RollingIconInfo(
+                icon: Icons.view_list_rounded,
+                text: Text('List'),
+              ),
+              rollingInfoLeft: const RollingIconInfo(
+                icon: Icons.location_on_outlined,
+                backgroundColor: Colors.grey,
+                text: Text('Map'),
+              ),
+            ),
           ),
-          markers: markers,
-          onMapCreated: (GoogleMapController controller) {
-            mapController = controller;
-            _manager.setMapId(controller.mapId);
-          },
-          onCameraMove: _manager.onCameraMove,
-          onCameraIdle: _manager.updateMap),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           _manager.setItems(<Place>[
@@ -73,6 +89,40 @@ class MapScreenState extends State<MapScreen> {
           ]);
         },
         child: Icon(Icons.update),
+      ),
+    );
+  }
+
+  Widget buildMap() {
+    return GoogleMap(
+      mapType: MapType.normal,
+      initialCameraPosition: CameraPosition(
+        target: _initialPosition,
+        zoom: 16,
+      ),
+      markers: markers,
+      onMapCreated: (GoogleMapController controller) {
+        mapController = controller;
+        _manager.setMapId(controller.mapId);
+      },
+      onCameraMove: _manager.onCameraMove,
+      onCameraIdle: _manager.updateMap,
+    );
+  }
+
+  Widget buildList() {
+    // 리스트 화면을 구성하는 위젯을 반환
+    // 리스트 형태로 Challenge들을 보여주는 화면으로 변경
+    return Container(
+      color: Colors.white, // 리스트 화면 배경색
+      child: ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(items[index].name),
+            // 리스트 아이템에 대한 구현
+          );
+        },
       ),
     );
   }
