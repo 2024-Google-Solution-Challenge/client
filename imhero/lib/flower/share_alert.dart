@@ -43,20 +43,20 @@ AlertDialog shareAlert(BuildContext context, int flowerNum) {
       children: [
         Image.asset(
           'assets/img/${flowerName[flowerNum - 1]}',
-          width: 50,
-          height: 50,
+          width: 40,
+          height: 40,
         ),
         const Text(
           'I grew a flower!',
           style: TextStyle(
-            fontSize: 18,
+            fontSize: 16,
             color: Colors.black,
           ),
         ),
         Image.asset(
           'assets/img/${flowerName[flowerNum - 1]}',
-          width: 50,
-          height: 50,
+          width: 40,
+          height: 40,
         ),
       ],
     ),
@@ -119,15 +119,15 @@ AlertDialog shareAlert(BuildContext context, int flowerNum) {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           postButton(
-            'Add to gallery',
-            150,
+            'Save',
+            100,
             false,
             () {
               // add to gallery
             },
           ),
           const SizedBox(
-            width: 5,
+            width: 10,
           ),
           postButton(
             'cancel',

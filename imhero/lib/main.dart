@@ -26,10 +26,9 @@ class MainApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        // body: MyPageScreen(),
-        body: SplashScreen(),
-        //body: shareAlert(context, 1)
-      ),
+          // body: MyPageScreen(),
+          //body: SplashScreen(),
+          body: shareAlert(context, 1)),
     );
   }
 }
