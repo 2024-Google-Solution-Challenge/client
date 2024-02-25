@@ -15,12 +15,15 @@ class ChallengeScreen extends StatefulWidget {
 }
 
 class _ChallengeScreenState extends State<ChallengeScreen> {
-  int level = 1;
+  int level = 6;
   int maxLevel = 10;
   bool toggle = true;
 
   @override
   Widget build(BuildContext context) {
+    double app_height = MediaQuery.of(context).size.height;
+    double app_width = MediaQuery.of(context).size.width;
+
     return SingleChildScrollView(
         child: Padding(
       padding: const EdgeInsets.all(20),
@@ -28,7 +31,7 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(
-            width: MediaQuery.of(context).size.width,
+            width: app_width,
             child: const Text(
               "One-day goal challenge",
               style: TextStyle(
@@ -64,28 +67,29 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
               ),
             ],
           ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.4,
-            child:
-                toggle ? GageBar(level, maxLevel).build() : const StatusGraph(),
+          Container(
+            margin: const EdgeInsets.only(top: 20, bottom: 20),
+            child: toggle
+                ? GageBar(level, maxLevel, app_width - 40).build()
+                : const StatusGraph(),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               DottedLine(
-                width: double.maxFinite,
+                width: app_width - 40 - 80,
                 height: 1,
                 color: Colors.grey,
               ),
               Image.asset(
                 "assets/img/sprout.png",
-                width: 50,
-                height: 50,
+                width: 80,
+                height: 80,
               ),
             ],
           ),
-          const ChallengeList(),
+          ChallengeList(),
         ],
       ),
     ));
