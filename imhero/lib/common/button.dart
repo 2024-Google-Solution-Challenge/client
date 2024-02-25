@@ -30,29 +30,50 @@ Widget iconCountButton(
 ElevatedButton floatingButton(
     String text, double width, void Function() onPressed) {
   return ElevatedButton(
-    onPressed: onPressed,
-    style: ElevatedButton.styleFrom(
-      backgroundColor: Colors.white,
-      surfaceTintColor: Colors.white,
-      elevation: 5,
-      fixedSize: Size(width, 40),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-        side: const BorderSide(
-          color: TITLE_TEXT_COLOR,
-          width: 2,
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.white,
+        elevation: 5,
+        fixedSize: Size(width, 40),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+          side: const BorderSide(
+            color: TITLE_TEXT_COLOR,
+            width: 2,
+          ),
         ),
       ),
-    ),
-    child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const Icon(Icons.add, color: TITLE_TEXT_COLOR),
-          const SizedBox(width: 10),
-          Text(text, style: const TextStyle(color: TITLE_TEXT_COLOR))
-        ]),
-  );
+      child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Icon(Icons.add, color: TITLE_TEXT_COLOR),
+            const SizedBox(width: 10),
+            Text(text, style: const TextStyle(color: TITLE_TEXT_COLOR))
+          ]));
+}
+
+ElevatedButton postButton(
+    String text, double width, bool ver, void Function() onPressed) {
+  return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: ver ? Colors.white : PRIMARY_COLOR,
+        surfaceTintColor: Colors.white,
+        fixedSize: Size(width, 40),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+          side: ver
+              ? const BorderSide(
+                  color: PRIMARY_COLOR,
+                  width: 2,
+                )
+              : BorderSide.none,
+        ),
+      ),
+      child: Text(text,
+          style: TextStyle(color: ver ? PRIMARY_COLOR : Colors.white)));
 }
 
 BottomNavigationBar bottomNavigationBar(TabController controller, int index) {

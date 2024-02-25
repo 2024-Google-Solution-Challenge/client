@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:imhero/common/button.dart';
 import 'package:imhero/community/community_card.dart';
+import 'package:imhero/community/post_screen.dart';
 
-class CommunityScreen extends StatelessWidget {
+class CommunityScreen extends StatefulWidget {
   const CommunityScreen({super.key});
   // profile, account name, content, heart, reply,
 
+  @override
+  State<CommunityScreen> createState() => _CommunityScreenState();
+}
+
+class _CommunityScreenState extends State<CommunityScreen> {
+  bool postStatus = false;
   @override
   Widget build(BuildContext context) {
     final sample = [
@@ -42,27 +49,42 @@ class CommunityScreen extends StatelessWidget {
         'isHearted': false,
       },
     ];
-    return Stack(children: [
-      ListView.builder(
-        itemCount: sample.length,
-        itemBuilder: (context, index) {
-          return CommunityCard(
-            profile: sample[index]['profile'].toString(),
-            accountName: sample[index]['accountName'].toString(),
-            content: sample[index]['content'].toString(),
-            heart: sample[index]['heart'] as int,
-            reply: sample[index]['reply'] as int,
-            isHearted: sample[index]['isHearted'] as bool,
-          );
-        },
-      ),
-      Positioned(
-        bottom: 20,
-        right: (MediaQuery.of(context).size.width / 2) - 70,
-        child: floatingButton('Post', 140, () {
-          // Navigator.pushNamed(context, '/add_to_community');
-        }),
-      ),
-    ]);
+    return postStatus
+        ? postScreen(
+            postButton('Post', 130, true, () {
+              setState(() {
+                postStatus = false;
+              });
+            }),
+            postButton('Cancel', 130, false, () {
+              setState(() {
+                postStatus = false;
+              });
+            }),
+          )
+        : Stack(children: [
+            ListView.builder(
+              itemCount: sample.length,
+              itemBuilder: (context, index) {
+                return CommunityCard(
+                  profile: sample[index]['profile'].toString(),
+                  accountName: sample[index]['accountName'].toString(),
+                  content: sample[index]['content'].toString(),
+                  heart: sample[index]['heart'] as int,
+                  reply: sample[index]['reply'] as int,
+                  isHearted: sample[index]['isHearted'] as bool,
+                );
+              },
+            ),
+            Positioned(
+              bottom: 20,
+              right: (MediaQuery.of(context).size.width / 2) - 70,
+              child: floatingButton('Post', 140, () {
+                setState(() {
+                  postStatus = true;
+                });
+              }),
+            ),
+          ]);
   }
 }
