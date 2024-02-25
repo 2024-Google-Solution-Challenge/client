@@ -25,6 +25,7 @@ dependencies:
   path_provider: ^2.1.2
   rolling_switch: ^0.0.2
   flutter_advanced_switch: ^3.0.1
+  url_launcher: ^6.2.5
 
 dev_dependencies:
     flutter_test:
