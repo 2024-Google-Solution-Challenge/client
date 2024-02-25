@@ -23,31 +23,36 @@ class _ChallengeScreenState extends State<ChallengeScreen> {
 
   final TodayCardList = [
     {
-      "title": "Challenge 1",
-      "description": "Description 1",
+      "title": "Mastering Recycling",
+      "description":
+          "Join us in the quest to perfect your recy\ncling habits and minimize waste.",
       "isChecked": false,
     },
     {
-      "title": "Challenge 2",
-      "description": "Description 2",
+      "title": "Tumbler Triumph",
+      "description":
+          "Take the plunge into sustainable living \nby ditching single-use plastics.",
       "isChecked": false,
     },
   ];
 
   final TogetherCardList = [
     {
-      "title": "Challenge 1",
-      "description": "Description 1",
+      "title": "Green Plugging!",
+      "description":
+          "Join us for eco-friendly activities like \nrecycling and volunteering.",
       "isChecked": false,
     },
     {
-      "title": "Challenge 2",
-      "description": "Description 2",
+      "title": "Green Volunteer!",
+      "description":
+          "Join us in volunteering for a better co\nmmunity and planet!!",
       "isChecked": false,
     },
     {
-      "title": "Challenge 3",
-      "description": "Description 3",
+      "title": "Unite for Eco-Actions!",
+      "description":
+          "Come together for environmental initi\natives like tree planting.",
       "isChecked": false,
     },
   ];

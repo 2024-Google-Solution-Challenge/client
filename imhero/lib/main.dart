@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:imhero/login/splach_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'package:imhero/community/community_screen.dart';
+import 'package:imhero/mypage/mypage_screen.dart';
 import 'package:imhero/common/root_tab.dart';
 
 void main() async {
@@ -25,7 +25,7 @@ class MainApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        //body: CommunityScreen(),
+        // body: MyPageScreen(),
         body: SplashScreen(),
       ),
     );

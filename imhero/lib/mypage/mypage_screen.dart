@@ -66,7 +66,7 @@ class _MyPageScreenState extends State<MyPageScreen> {
           color: BACKGROUND_COLOR,
           child: Padding(
             padding:
-                EdgeInsets.fromLTRB(app_width * 0.05, app_height * 0.2, 0, 0),
+                EdgeInsets.fromLTRB(app_width * 0.05, app_height * 0.16, 0, 0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -119,7 +119,7 @@ class _MyPageScreenState extends State<MyPageScreen> {
                       side: BorderSide(
                         width: 1,
                         strokeAlign: BorderSide.strokeAlignCenter,
-                        color: Color(0xFFCBD2E0),
+                        color: const Color.fromARGB(255, 232, 232, 232),
                       ),
                     ),
                   ),
@@ -136,25 +136,47 @@ class _MyPageScreenState extends State<MyPageScreen> {
                       color: Colors.black,
                       fontWeight: FontWeight.w600),
                 ),
+                SizedBox(
+                  height: 10,
+                ),
                 Row(
                     mainAxisAlignment: MainAxisAlignment
                         .center, // 그림을 중앙 정렬하기 위해 MainAxisAlignment.center 사용
                     children: [
-                      Text(
-                        "${userData?['email'] ?? "N/A"}",
-                        style: const TextStyle(
-                            fontSize: 20,
-                            decoration: TextDecoration.none,
-                            color: Colors.black,
-                            fontWeight: FontWeight.normal),
-                      ),
-                      // SizedBox(
-                      //   width: app_width * 0.2,
+                      // Text(
+                      //   "${userData?['email'] ?? "N/A"}",
+                      //   style: const TextStyle(
+                      //       fontSize: 20,
+                      //       decoration: TextDecoration.none,
+                      //       color: Colors.black,
+                      //       fontWeight: FontWeight.normal),
                       // ),
+                      Container(
+                        width: app_width * 0.8,
+                        padding: EdgeInsets.fromLTRB(
+                            20, 15, 20, 15), // 텍스트와 테두리 사이의 여백 설정
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Color.fromARGB(255, 232, 232, 232),
+                            width: 2, // 테두리 두께 설정
+                          ),
+                          borderRadius:
+                              BorderRadius.circular(10), // 테두리 모서리 둥글기 설정
+                        ),
+                        child: Text(
+                          "${userData?['email'] ?? "N/A"}",
+                          style: const TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                      ),
+
                       IDchange(userData),
                     ]),
                 SizedBox(
-                  height: 20,
+                  height: 30,
                 ),
                 const Text(
                   "PassWord",
@@ -164,21 +186,34 @@ class _MyPageScreenState extends State<MyPageScreen> {
                       color: Colors.black,
                       fontWeight: FontWeight.w600),
                 ),
+                SizedBox(
+                  height: 10,
+                ),
                 Row(
                     mainAxisAlignment: MainAxisAlignment
                         .center, // 그림을 중앙 정렬하기 위해 MainAxisAlignment.center 사용
                     children: [
-                      Text(
-                        "${userData?['email'] ?? "N/A"}",
-                        style: const TextStyle(
+                      Container(
+                        width: app_width * 0.8,
+                        padding: EdgeInsets.fromLTRB(
+                            20, 15, 20, 15), // 텍스트와 테두리 사이의 여백 설정
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Color.fromARGB(255, 232, 232, 232),
+                            width: 2, // 테두리 두께 설정
+                          ),
+                          borderRadius:
+                              BorderRadius.circular(10), // 테두리 모서리 둥글기 설정
+                        ),
+                        child: Text(
+                          "********",
+                          style: const TextStyle(
                             fontSize: 20,
-                            decoration: TextDecoration.none,
                             color: Colors.black,
-                            fontWeight: FontWeight.normal),
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
                       ),
-                      // SizedBox(
-                      //   width: app_width * 0.2,
-                      // ),
                       IDchange(userData),
                     ]),
               ],

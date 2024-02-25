@@ -264,7 +264,7 @@ class MapScreenState extends State<MapScreen> {
                         IconButton(
                           onPressed: () {
                             UrlLauncher.launchURL(
-                                'https://calendar.google.com/calendar/u/0/r?pli=1');
+                                'https://workspace.google.com/products/calendar/?hl=ko');
                           },
                           icon: Icon(Icons.chat_bubble_outline_rounded),
                           color: PRIMARY_COLOR,
