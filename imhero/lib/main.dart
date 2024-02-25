@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:imhero/login/splach_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'package:imhero/common/root_tab.dart';
+import 'package:imhero/map/map_screen.dart';
 
 void main() async {
   await Firebase.initializeApp(
@@ -22,8 +22,7 @@ class MainApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        // body: SplashScreen(),
-        body: RootTab(),
+        body: MapScreen(),
       ),
     );
   }
