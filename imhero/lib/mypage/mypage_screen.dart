@@ -70,7 +70,7 @@ class _MyPageScreenState extends State<MyPageScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'MY PAGE',
                   style: TextStyle(
                     color: Color(0xFFFF7510),
@@ -100,7 +100,7 @@ class _MyPageScreenState extends State<MyPageScreen> {
                     children: [
                       Text(
                         "${userData?['name'] ?? "N/A"}",
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 20,
                             decoration: TextDecoration.none,
                             color: Colors.black,
@@ -112,7 +112,7 @@ class _MyPageScreenState extends State<MyPageScreen> {
                   height: app_height * 0.03,
                 ),
                 // ID
-                Text(
+                const Text(
                   "ID",
                   style: TextStyle(
                       fontSize: 16,
@@ -126,7 +126,7 @@ class _MyPageScreenState extends State<MyPageScreen> {
                     children: [
                       Text(
                         "${userData?['email'] ?? "N/A"}",
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 20,
                             decoration: TextDecoration.none,
                             color: Colors.black,
@@ -172,7 +172,7 @@ class _MyPageScreenState extends State<MyPageScreen> {
               context: context,
               builder: (BuildContext context) {
                 return AlertDialog(
-                  title: Text("Change Nickname"),
+                  title: const Text("Change Nickname"),
                   content: TextField(
                     onChanged: (value) {
                       tempNickname = value; // 텍스트가 변경될 때마다 임시 닉네임 업데이트
@@ -183,7 +183,7 @@ class _MyPageScreenState extends State<MyPageScreen> {
                       onPressed: () {
                         Navigator.of(context).pop(); // 팝업 닫기
                       },
-                      child: Text('Cancel'),
+                      child: const Text('Cancel'),
                     ),
                     TextButton(
                       onPressed: () async {
@@ -200,7 +200,7 @@ class _MyPageScreenState extends State<MyPageScreen> {
 
                         Navigator.of(context).pop(); // 팝업 닫기
                       },
-                      child: Text('Save'),
+                      child: const Text('Save'),
                     ),
                   ],
                 );
@@ -209,7 +209,7 @@ class _MyPageScreenState extends State<MyPageScreen> {
           }
         }
       },
-      icon: Icon(Icons.edit_square),
+      icon: const Icon(Icons.edit_square),
     ); // 아이콘은 수정 아이콘으로 설정됨
   }
 
@@ -240,7 +240,7 @@ class _MyPageScreenState extends State<MyPageScreen> {
               context: context,
               builder: (BuildContext context) {
                 return AlertDialog(
-                  title: Text("Change Your Email"),
+                  title: const Text("Change Your Email"),
                   content: TextField(
                     onChanged: (value) {
                       tempNickname = value; // 텍스트가 변경될 때마다 임시 닉네임 업데이트
@@ -251,7 +251,7 @@ class _MyPageScreenState extends State<MyPageScreen> {
                       onPressed: () {
                         Navigator.of(context).pop(); // 팝업 닫기
                       },
-                      child: Text('Cancel'),
+                      child: const Text('Cancel'),
                     ),
                     TextButton(
                       onPressed: () async {
@@ -268,7 +268,7 @@ class _MyPageScreenState extends State<MyPageScreen> {
 
                         Navigator.of(context).pop(); // 팝업 닫기
                       },
-                      child: Text('Save'),
+                      child: const Text('Save'),
                     ),
                   ],
                 );
@@ -277,7 +277,7 @@ class _MyPageScreenState extends State<MyPageScreen> {
           }
         }
       },
-      icon: Icon(Icons.edit_square),
+      icon: const Icon(Icons.edit_square),
     ); // 아이콘은 수정 아이콘으로 설정됨
   }
 }

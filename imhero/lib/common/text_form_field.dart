@@ -21,7 +21,7 @@ class CustomTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final baseBorder = OutlineInputBorder(
+    const baseBorder = OutlineInputBorder(
       borderSide: BorderSide(
         color: INPUT_BORDER_COLOR,
         width: 1.0,
@@ -80,7 +80,7 @@ class LoginTextFormField extends StatelessWidget {
     // double app_width = MediaQuery.of(context).size.width;
 
     final baseBorder = OutlineInputBorder(
-      borderSide: BorderSide(
+      borderSide: const BorderSide(
         color: Colors.green,
         width: 2.0,
       ),
@@ -141,7 +141,7 @@ class SignupTextFormField extends StatelessWidget {
     // double app_width = MediaQuery.of(context).size.width;
 
     final baseBorder = OutlineInputBorder(
-      borderSide: BorderSide(
+      borderSide: const BorderSide(
         color: Color(0xFFCBD2E0),
         width: 2.0,
       ),

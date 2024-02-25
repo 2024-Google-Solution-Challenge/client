@@ -1,8 +1,10 @@
+import 'package:flutter/widgets.dart';
 import 'package:imhero/common/colors.dart';
 import 'package:imhero/common/layout.dart';
+import 'package:imhero/common/style.dart';
 
 import 'package:imhero/mypage/mypage_screen.dart';
-import 'package:imhero/comunity/comunity_screen.dart';
+import 'package:imhero/community/community_screen.dart';
 import 'package:imhero/flower/flower_screen.dart';
 import 'package:imhero/map/map_screen.dart';
 import 'package:imhero/challenge/challenge_screen.dart';
@@ -60,7 +62,7 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
         },
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: PRIMARY_COLOR,
+        selectedItemColor: BODY_TITLE_COLOR,
         unselectedItemColor: BODY_TEXT_COLOR,
         selectedFontSize: 10,
         unselectedFontSize: 10,
@@ -86,7 +88,21 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
             icon: Icon(Icons.person_outlined),
             label: 'Talk',
           ),
-        ],
+        ].map((item) {
+          return BottomNavigationBarItem(
+            icon: Stack(
+              children: [
+                if (item.label == 'My Flower' && index == 0 ||
+                    item.label == 'Challenge' && index == 1 ||
+                    item.label == 'Map' && index == 2 ||
+                    item.label == 'Talk' && index == 3)
+                  bottomNavigationCircle(),
+                item.icon,
+              ],
+            ),
+            label: item.label,
+          );
+        }).toList(),
       ),
       child: TabBarView(
         physics: const NeverScrollableScrollPhysics(),
@@ -95,7 +111,7 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
           FlowerScreen(),
           ChallengeScreen(),
           MapScreen(),
-          ComunityScreen(),
+          CommunityScreen(),
         ],
       ),
     );

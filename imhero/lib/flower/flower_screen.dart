@@ -221,7 +221,7 @@ class _FlowerScreenState extends State<FlowerScreen> {
                       slivers: [
                         SliverToBoxAdapter(
                           child: Padding(
-                            padding: EdgeInsets.fromLTRB(
+                            padding: const EdgeInsets.fromLTRB(
                                 0, 15, 0, 30), // 위쪽에 8픽셀의 패딩 추가
                             child: FractionallySizedBox(
                               widthFactor: 0.12, // 화면 너비의 절반 크기로 설정
@@ -240,9 +240,9 @@ class _FlowerScreenState extends State<FlowerScreen> {
                           child: Padding(
                             padding: EdgeInsets.fromLTRB(
                                 app_width * 0.05, 0, app_width * 0.05, 0),
-                            child: Column(
+                            child: const Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
+                              children: [
                                 Text(
                                   '오늘 남은 Challenge',
                                   style: TextStyle(
