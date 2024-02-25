@@ -5,10 +5,12 @@ import 'package:geocoding/geocoding.dart';
 
 import 'package:imhero/common/colors.dart';
 import 'package:imhero/common/button.dart';
+import 'package:imhero/common/root_tab.dart';
 import 'package:imhero/common/style.dart';
 import 'package:imhero/common/text_form_field.dart';
 
 import 'package:imhero/map/place.dart';
+import 'package:imhero/map/map_screen.dart';
 
 class AddChallengeToMap extends StatefulWidget {
   final void Function() onBackButtonPress;
@@ -217,7 +219,9 @@ class AddChallengeToMapState extends State<AddChallengeToMap> {
                 "Add Challenge",
                 300,
                 false,
-                () {},
+                () {
+                  
+                },
               )
             ],
           ),

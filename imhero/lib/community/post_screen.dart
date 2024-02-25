@@ -64,7 +64,7 @@ Widget postScreen(Widget addPostButton, Widget cancelButton) {
                     ),
                     labelText: 'Content',
                   ),
-                  maxLines: 10,
+                  maxLines: 7,
                 ),
                 const Spacer(),
                 Row(

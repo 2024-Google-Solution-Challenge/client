@@ -55,12 +55,12 @@ class _CommunityScreenState extends State<CommunityScreen> {
     ];
     return postStatus
         ? postScreen(
-            postButton('Post', 130, true, () {
+            postButton('Post', 100, true, () {
               setState(() {
                 postStatus = false;
               });
             }),
-            postButton('Cancel', 130, false, () {
+            postButton('Cancel', 100, false, () {
               setState(() {
                 postStatus = false;
               });
