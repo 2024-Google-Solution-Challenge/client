@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
           context,
           MaterialPageRoute(
               builder: (context) =>
-                  LoginScreen())); //of(context).pushReplacementNamed('/home');
+                  const LoginScreen())); //of(context).pushReplacementNamed('/home');
     });
 
     return MaterialApp(

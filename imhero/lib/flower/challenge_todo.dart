@@ -26,7 +26,7 @@ class Todo extends StatelessWidget {
             color: Colors.grey.withOpacity(0.5), // 그림자 색상
             spreadRadius: 2, // 그림자가 얼마나 퍼지는지를 결정합니다.
             blurRadius: 4, // 그림자의 흐릿한 정도
-            offset: Offset(0, 1), // 그림자의 위치 조절
+            offset: const Offset(0, 1), // 그림자의 위치 조절
           ),
         ],
       ),

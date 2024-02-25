@@ -22,7 +22,6 @@ class MapScreen extends StatefulWidget {
 class MapScreenState extends State<MapScreen> {
   late ClusterManager _manager;
   late GoogleMapController mapController;
-  // bool isMapMode = true;
 
   final List<Map<String, String>> TogetherCardList = [
     {
@@ -82,49 +81,49 @@ class MapScreenState extends State<MapScreen> {
   List<Place> get items => [
         Place(
           name: TogetherCardList[0]['title']!,
-          latLng: LatLng(37.585511, 127.029305),
+          latLng: const LatLng(37.585511, 127.029305),
           title: TogetherCardList[0]['title']!,
           description: TogetherCardList[0]['description']!,
         ),
         Place(
           name: TogetherCardList[1]['title']!,
-          latLng: LatLng(37.585766, 127.025178),
+          latLng: const LatLng(37.585766, 127.025178),
           title: TogetherCardList[1]['title']!,
           description: TogetherCardList[1]['description']!,
         ),
         Place(
           name: TogetherCardList[2]['title']!,
-          latLng: LatLng(37.587192, 127.026794),
+          latLng: const LatLng(37.587192, 127.026794),
           title: TogetherCardList[2]['title']!,
           description: TogetherCardList[2]['description']!,
         ),
         Place(
           name: TogetherCardList[3]['title']!,
-          latLng: LatLng(37.588428, 127.033653),
+          latLng: const LatLng(37.588428, 127.033653),
           title: TogetherCardList[3]['title']!,
           description: TogetherCardList[3]['description']!,
         ),
         Place(
           name: TogetherCardList[4]['title']!,
-          latLng: LatLng(37.592643, 127.025150),
+          latLng: const LatLng(37.592643, 127.025150),
           title: TogetherCardList[4]['title']!,
           description: TogetherCardList[4]['description']!,
         ),
         Place(
           name: TogetherCardList[5]['title']!,
-          latLng: LatLng(37.590065, 127.036342),
+          latLng: const LatLng(37.590065, 127.036342),
           title: TogetherCardList[5]['title']!,
           description: TogetherCardList[5]['description']!,
         ),
         Place(
           name: TogetherCardList[6]['title']!,
-          latLng: LatLng(37.575837, 127.027792),
+          latLng: const LatLng(37.575837, 127.027792),
           title: TogetherCardList[6]['title']!,
           description: TogetherCardList[6]['description']!,
         ),
         Place(
           name: TogetherCardList[7]['title']!,
-          latLng: LatLng(37.581606, 127.031548),
+          latLng: const LatLng(37.581606, 127.031548),
           title: TogetherCardList[7]['title']!,
           description: TogetherCardList[7]['description']!,
         ),
@@ -177,11 +176,11 @@ class MapScreenState extends State<MapScreen> {
             top: app_height * 0.01,
             child: AdvancedSwitch(
               controller: _controllerswitch,
-              activeChild: Icon(
+              activeChild: const Icon(
                 Icons.view_list_rounded,
                 color: Colors.white,
               ),
-              inactiveChild: Icon(
+              inactiveChild: const Icon(
                 Icons.location_on_outlined,
               ),
               activeColor: PRIMARY_COLOR,
@@ -189,6 +188,10 @@ class MapScreenState extends State<MapScreen> {
               width: 60,
             ),
           ),
+          Positioned(
+              left: MediaQuery.of(context).size.width / 2 - 120,
+              bottom: 10,
+              child: floatingButton("Create new challenge", 240, () {})),
         ],
       ),
     );
@@ -220,9 +223,9 @@ class MapScreenState extends State<MapScreen> {
       ),
       child: Column(
         children: [
-          SizedBox(height: 80),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
+          const SizedBox(height: 80),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(20, 20, 20, 10),
             child: SizedBox(
               width: double.infinity,
               child: Text(
@@ -333,7 +336,7 @@ class MapScreenState extends State<MapScreen> {
                     MediaQuery.of(context).size.width * 0.8, // 화면 너비의 80%로 설정
                 height:
                     MediaQuery.of(context).size.height * 0.5, // 화면 높이의 50%로 설정
-                padding: EdgeInsets.all(16), // 내부 패딩 설정
+                padding: const EdgeInsets.all(16), // 내부 패딩 설정
                 decoration: BoxDecoration(
                   color: Colors.white, // 배경색 설정
                   borderRadius: BorderRadius.circular(8), // 모서리 둥글게 설정
@@ -342,7 +345,7 @@ class MapScreenState extends State<MapScreen> {
                       color: Colors.grey.withOpacity(0.5), // 그림자 색상 및 투명도 설정
                       spreadRadius: 2, // 그림자 확장 반경 설정
                       blurRadius: 5, // 그림자 흐림 정도 설정
-                      offset: Offset(0, 3), // 그림자 위치 설정
+                      offset: const Offset(0, 3), // 그림자 위치 설정
                     ),
                   ],
                 ),
@@ -351,20 +354,20 @@ class MapScreenState extends State<MapScreen> {
                   children: [
                     Text(
                       title,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Text(
                       description,
-                      style: TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 16),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Text(
                       'Contributors: $contrib',
-                      style: TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 16),
                     ),
                   ],
                 ),

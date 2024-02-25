@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
+import 'package:imhero/common/button.dart';
+
 class CommunityCard extends StatefulWidget {
   final String profile;
   final String accountName;
   final String content;
-  final int heart;
-  final int reply;
+  int heart;
+  int reply;
   bool isHearted;
 
   CommunityCard(
@@ -78,19 +80,32 @@ class _CommunityCardState extends State<CommunityCard> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    iconCount(
+                    iconCountButton(
                       Icons.favorite_outline,
+                      Icons.favorite,
                       widget.heart,
                       () {
                         setState(() {
                           widget.isHearted = !widget.isHearted;
+                          if (widget.isHearted) {
+                            widget.heart++;
+                          } else {
+                            widget.heart--;
+                          }
                         });
                       },
+                      widget.isHearted,
                     ),
                     const SizedBox(
                       width: 10,
                     ),
-                    iconCount(Icons.message_outlined, widget.reply, () {}),
+                    iconCountButton(
+                      Icons.message_outlined,
+                      null,
+                      widget.reply,
+                      () {},
+                      false,
+                    ),
                     Row(
                       children: [
                         IconButton(
@@ -112,23 +127,4 @@ class _CommunityCardState extends State<CommunityCard> {
       ),
     );
   }
-}
-
-Widget iconCount(
-  IconData icon,
-  int count,
-  void Function()? onPressed,
-) {
-  return Row(
-    children: [
-      IconButton(icon: Icon(icon), onPressed: onPressed),
-      const SizedBox(
-        width: 5,
-      ),
-      Text(count.toString(), style: const TextStyle(fontSize: 16)),
-      const SizedBox(
-        width: 20,
-      ),
-    ],
-  );
 }

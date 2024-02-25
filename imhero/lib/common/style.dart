@@ -14,8 +14,8 @@ TextStyle underLineTextStyle() {
 
 Widget bottomNavigationCircle() {
   return Container(
-    width: 20,
-    height: 20,
+    width: 30,
+    height: 30,
     decoration: const BoxDecoration(
       shape: BoxShape.circle,
       gradient: LinearGradient(
