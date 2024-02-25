@@ -1,63 +1,13 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-class ChallengeList extends StatefulWidget {
-  @override
-  State<ChallengeList> createState() => _ChallengeListState();
-}
-
-class _ChallengeListState extends State<ChallengeList> {
-  final CardList = [
-    {
-      "title": "Challenge 1",
-      "description": "Description 1",
-      "isChecked": false,
-    },
-    {
-      "title": "Challenge 2",
-      "description": "Description 2",
-      "isChecked": false,
-    },
-    {
-      "title": "Challenge 3",
-      "description": "Description 3",
-      "isChecked": false,
-    },
-    {
-      "title": "Challenge 4",
-      "description": "Description 4",
-      "isChecked": false,
-    },
-    {
-      "title": "Challenge 5",
-      "description": "Description 5",
-      "isChecked": false,
-    },
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 500,
-      width: 500,
-      child: ListView.builder(
-        itemCount: CardList.length,
-        itemBuilder: (BuildContext context, int index) {
-          return ChallengeCard(
-            title: CardList[index]["title"].toString(),
-            description: CardList[index]["description"].toString(),
-            isChecked: CardList[index]["isChecked"] as bool,
-          );
-        },
-      ),
-    );
-  }
-}
+import 'package:flutter/widgets.dart';
+import 'package:imhero/common/colors.dart';
 
 class ChallengeCard extends StatefulWidget {
   final String title;
   final String description;
-  final bool isChecked;
-  const ChallengeCard(
+  bool isChecked;
+  ChallengeCard(
       {super.key,
       required this.title,
       required this.description,
@@ -74,7 +24,14 @@ class _ChallengeCardState extends State<ChallengeCard> {
       padding: const EdgeInsets.all(10),
       margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: widget.isChecked ? null : Colors.white,
+        gradient: widget.isChecked
+            ? const LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Color(0xffd8efd4), Color(0xffecfdfb)],
+              )
+            : null,
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
@@ -98,23 +55,31 @@ class _ChallengeCardState extends State<ChallengeCard> {
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
+                      color: BODY_TITLE_COLOR,
                     ),
                   ),
                   Text(
                     widget.description,
                     style: const TextStyle(
                       fontSize: 12,
+                      color: BODY_TEXT_COLOR,
                     ),
                   ),
                 ],
               ),
-              Checkbox(
-                value: widget.isChecked,
-                onChanged: (bool? value) {
-                  setState(() {
-                    //widget.isChecked = value!;
-                  });
-                },
+              Transform.scale(
+                scale: 1.5,
+                child: Checkbox(
+                    value: widget.isChecked,
+                    activeColor: Colors.white,
+                    checkColor: PRIMARY_COLOR,
+                    shape: const CircleBorder(),
+                    side: const BorderSide(color: PRIMARY_COLOR, width: 2.0),
+                    onChanged: (bool? value) {
+                      setState(() {
+                        widget.isChecked = value!;
+                      });
+                    }),
               ),
             ],
           ),
