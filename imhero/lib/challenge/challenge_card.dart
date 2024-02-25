@@ -59,6 +59,8 @@ class _ChallengeCardState extends State<ChallengeCard> {
                   ),
                   Text(
                     widget.description,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
                       fontSize: 12,
                       color: BODY_TEXT_COLOR,
