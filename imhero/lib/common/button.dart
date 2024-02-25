@@ -17,11 +17,11 @@ Widget iconCountButton(
               color: isClicked ? Colors.red : Colors.black),
           onPressed: onPressed),
       const SizedBox(
-        width: 5,
+        width: 0,
       ),
       Text(count.toString(), style: const TextStyle(fontSize: 16)),
       const SizedBox(
-        width: 20,
+        width: 13,
       ),
     ],
   );

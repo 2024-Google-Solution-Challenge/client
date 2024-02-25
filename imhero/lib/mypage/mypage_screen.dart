@@ -111,9 +111,53 @@ class _MyPageScreenState extends State<MyPageScreen> {
                 SizedBox(
                   height: app_height * 0.03,
                 ),
+                //bar
+                Container(
+                  width: 320,
+                  decoration: const ShapeDecoration(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        width: 1,
+                        strokeAlign: BorderSide.strokeAlignCenter,
+                        color: Color(0xFFCBD2E0),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
                 // ID
                 const Text(
                   "ID",
+                  style: TextStyle(
+                      fontSize: 16,
+                      decoration: TextDecoration.none,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600),
+                ),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment
+                        .center, // 그림을 중앙 정렬하기 위해 MainAxisAlignment.center 사용
+                    children: [
+                      Text(
+                        "${userData?['email'] ?? "N/A"}",
+                        style: const TextStyle(
+                            fontSize: 20,
+                            decoration: TextDecoration.none,
+                            color: Colors.black,
+                            fontWeight: FontWeight.normal),
+                      ),
+                      // SizedBox(
+                      //   width: app_width * 0.2,
+                      // ),
+                      IDchange(userData),
+                    ]),
+                SizedBox(
+                  height: 20,
+                ),
+                const Text(
+                  "PassWord",
                   style: TextStyle(
                       fontSize: 16,
                       decoration: TextDecoration.none,
