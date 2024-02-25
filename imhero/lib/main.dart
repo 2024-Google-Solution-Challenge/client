@@ -25,7 +25,7 @@ class MainApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        // body: CommunityScreen(),
+        //body: CommunityScreen(),
         body: SplashScreen(),
       ),
     );
