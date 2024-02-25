@@ -68,11 +68,13 @@ class MapScreenState extends State<MapScreen> {
     double app_height = MediaQuery.of(context).size.height;
     return Scaffold(
       body: createButton
-          ? addChallengeToMap(() {
-              setState(() {
-                createButton = false;
-              });
-            })
+          ? AddChallengeToMap(
+              onBackButtonPress: () {
+                setState(() {
+                  createButton = false;
+                });
+              },
+            )
           : Stack(
               children: [
                 if (!_controllerswitch.value) buildMap(),
