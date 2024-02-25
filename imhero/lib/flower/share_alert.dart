@@ -134,6 +134,7 @@ AlertDialog shareAlert(BuildContext context, int flowerNum) {
             100,
             true,
             () {
+              Navigator.pop(context);
               // add image to gallery
             },
           ),

@@ -21,14 +21,15 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        fontFamily: 'NotoSans',
-      ),
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
+        theme: ThemeData(
+          fontFamily: 'NotoSans',
+        ),
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
           // body: MyPageScreen(),
-          //body: SplashScreen(),
-          body: shareAlert(context, 1)),
-    );
+          body: SplashScreen(),
+        )
+        // body: shareAlert(context, 1)),
+        );
   }
 }
