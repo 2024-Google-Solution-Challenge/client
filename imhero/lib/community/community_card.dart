@@ -97,7 +97,7 @@ class _CommunityCardState extends State<CommunityCard> {
                       widget.isHearted,
                     ),
                     const SizedBox(
-                      width: 10,
+                      width: 0,
                     ),
                     iconCountButton(
                       Icons.message_outlined,
