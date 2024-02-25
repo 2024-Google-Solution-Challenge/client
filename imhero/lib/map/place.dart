@@ -3,15 +3,10 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Place with ClusterItem {
   final String name;
-  final bool isClosed;
   final LatLng latLng;
+  
 
-  Place({required this.name, required this.latLng, this.isClosed = false});
-
-  @override
-  String toString() {
-    return 'Place $name (closed : $isClosed)';
-  }
+  Place({required this.name, required this.latLng,});
 
   @override
   LatLng get location => latLng;
