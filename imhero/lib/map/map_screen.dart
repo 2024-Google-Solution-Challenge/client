@@ -3,11 +3,14 @@ import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:imhero/map/place.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart';
+import 'package:imhero/common/button.dart';
 import 'package:rolling_switch/rolling_switch.dart';
+
+import 'package:imhero/map/place.dart';
+import 'package:imhero/map/add_to_map.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -20,6 +23,7 @@ class MapScreenState extends State<MapScreen> {
   late ClusterManager _manager;
   late GoogleMapController mapController;
   bool isMapMode = true;
+  bool isAddMode = false;
 
   Set<Marker> markers = Set();
 
@@ -51,45 +55,42 @@ class MapScreenState extends State<MapScreen> {
   }
 
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          if (isMapMode) buildMap(),
-          if (!isMapMode) buildList(),
-          Positioned(
-            left: 16,
-            top: 16,
-            child: RollingSwitch.icon(
-              onChanged: (bool state) {
-                print('turned ${(state) ? 'on' : 'off'}');
-                setState(() {
-                  isMapMode = !state; // 상태에 따라 맵 모드 또는 리스트 모드로 전환
-                });
-              },
-              rollingInfoRight: const RollingIconInfo(
-                icon: Icons.view_list_rounded,
-                text: Text('List'),
-              ),
-              rollingInfoLeft: const RollingIconInfo(
-                icon: Icons.location_on_outlined,
-                backgroundColor: Colors.grey,
-                text: Text('Map'),
-              ),
+    return Stack(
+      children: [
+        if (isAddMode)
+          addTextToCommunity()
+        else
+          isMapMode ? buildMap() : buildList(),
+        Positioned(
+          left: 16,
+          top: 16,
+          child: RollingSwitch.icon(
+            onChanged: (bool state) {
+              print('turned ${(state) ? 'on' : 'off'}');
+              setState(() {
+                isMapMode = !state; // 상태에 따라 맵 모드 또는 리스트 모드로 전환
+              });
+            },
+            rollingInfoRight: const RollingIconInfo(
+              icon: Icons.view_list_rounded,
+              text: Text('List'),
+            ),
+            rollingInfoLeft: const RollingIconInfo(
+              icon: Icons.location_on_outlined,
+              backgroundColor: Colors.grey,
+              text: Text('Map'),
             ),
           ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _manager.setItems(<Place>[
-            for (int i = 0; i < 30; i++)
-              Place(
-                  name: 'New Place ${DateTime.now()} $i',
-                  latLng: LatLng(48.858265 + i * 0.01, 2.350107))
-          ]);
-        },
-        child: const Icon(Icons.update),
-      ),
+        ),
+        Positioned(
+            right: 16,
+            bottom: 16,
+            child: floatingButton("Create new challenge", () {
+              setState(() {
+                isAddMode = !isAddMode;
+              });
+            })),
+      ],
     );
   }
 
