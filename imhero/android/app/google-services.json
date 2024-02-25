@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "468540968920",
+    "project_id": "i-m-hero-fcc9f",
+    "storage_bucket": "i-m-hero-fcc9f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:468540968920:android:83e10495490cd015bc2cad",
+        "android_client_info": {
+          "package_name": "com.example.imhero"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjyML-rptkXGnLyGVr_BQpOxuVccG0PWY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
