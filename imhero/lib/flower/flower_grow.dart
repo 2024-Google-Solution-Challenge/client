@@ -55,7 +55,8 @@ class _FlowerGrowState extends State<FlowerGrow> {
       _currentImageIndex = (_currentImageIndex + 1) % _images.length;
       if (_currentImageIndex == 4) {
         FirebaseFirestore.instance.collection('Users').doc(userId).update({
-          'user_flower_counts.flower$flowernum': FieldValue.increment(1),
+          'user_flower_counts.flower${widget.flowernum}':
+              FieldValue.increment(1),
         });
         showDialog(
           context: context,

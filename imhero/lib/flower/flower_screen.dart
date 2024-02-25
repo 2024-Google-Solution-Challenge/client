@@ -139,6 +139,7 @@ class _FlowerScreenState extends State<FlowerScreen> {
                                           image3: 'assets/img/ver3_pink.png',
                                           image4: 'assets/img/ver4_pink.png',
                                           image5: 'assets/img/ver5_pink.png',
+                                          flowernum: 1,
                                           colorwater: const Color(0xFFFE5C96),
                                           countwater:
                                               userData['user_waterdrop_counts']
@@ -152,7 +153,8 @@ class _FlowerScreenState extends State<FlowerScreen> {
                                           image3: 'assets/img/ver3_skyblue.png',
                                           image4: 'assets/img/ver4_skyblue.png',
                                           image5: 'assets/img/ver5_skyblue.png',
-                                          colorwater: const Color(0xFFC1D6FF),
+                                          flowernum: 2,
+                                          colorwater: const Color(0xFF94B8FF),
                                           countwater:
                                               userData['user_waterdrop_counts']
                                                       ?['waterdrop2'] ??
@@ -165,6 +167,7 @@ class _FlowerScreenState extends State<FlowerScreen> {
                                           image3: 'assets/img/ver3_yellow.png',
                                           image4: 'assets/img/ver4_yellow.png',
                                           image5: 'assets/img/ver5_yellow.png',
+                                          flowernum: 3,
                                           colorwater: const Color(0xFF894600),
                                           countwater:
                                               userData['user_waterdrop_counts']
@@ -189,7 +192,8 @@ class _FlowerScreenState extends State<FlowerScreen> {
                                           image3: 'assets/img/ver3_white.png',
                                           image4: 'assets/img/ver4_white.png',
                                           image5: 'assets/img/ver5_white.png',
-                                          colorwater: const Color(0xFFFFEB80),
+                                          flowernum: 4,
+                                          colorwater: const Color(0xFFF4D11B),
                                           countwater:
                                               userData['user_waterdrop_counts']
                                                       ['waterdrop4'] ??
@@ -202,6 +206,7 @@ class _FlowerScreenState extends State<FlowerScreen> {
                                           image3: 'assets/img/ver3_purple.png',
                                           image4: 'assets/img/ver4_purple.png',
                                           image5: 'assets/img/ver5_purple.png',
+                                          flowernum: 5,
                                           colorwater: const Color(0xFFEA98FE),
                                           countwater:
                                               userData['user_waterdrop_counts']
@@ -215,6 +220,7 @@ class _FlowerScreenState extends State<FlowerScreen> {
                                           image3: 'assets/img/ver3_blue.png',
                                           image4: 'assets/img/ver4_blue.png',
                                           image5: 'assets/img/ver5_blue.png',
+                                          flowernum: 6,
                                           colorwater: const Color(0xFF798DFE),
                                           countwater:
                                               userData['user_waterdrop_counts']
