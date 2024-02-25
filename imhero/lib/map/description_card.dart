@@ -6,12 +6,14 @@ class DescriptionCard extends StatefulWidget {
   final String title;
   final String description;
   final int contrib;
+  final int card;
 
   DescriptionCard({
     Key? key,
     required this.title,
     required this.description,
     required this.contrib,
+    required this.card,
   }) : super(key: key);
 
   @override
@@ -59,8 +61,7 @@ class _DescripCardState extends State<DescriptionCard> {
                 },
                 child: Text('Join'),
                 style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all(PRIMARY_COLOR),
+                  backgroundColor: MaterialStateProperty.all(PRIMARY_COLOR),
                 ),
               ),
             ],

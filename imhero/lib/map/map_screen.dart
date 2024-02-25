@@ -11,6 +11,7 @@ import 'package:rolling_switch/rolling_switch.dart';
 import 'package:imhero/common/colors.dart';
 import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
 import 'package:imhero/map/description_card.dart';
+import 'package:imhero/map/map_plus.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -22,113 +23,9 @@ class MapScreen extends StatefulWidget {
 class MapScreenState extends State<MapScreen> {
   late ClusterManager _manager;
   late GoogleMapController mapController;
-  // bool isMapMode = true;
-
-  final List<Map<String, String>> TogetherCardList = [
-    {
-      "title": "Reduce, Reuse, Recycle Challenge",
-      "description":
-          "Practice the three Rs: Reduce, Reuse, Recycle. Minimize single-use plastics, repurpose items, and recycle materials."
-    },
-    {
-      "title": "Meatless Monday Challenge",
-      "description":
-          "Go meat-free every Monday to reduce your carbon footprint. Explore vegetarian or vegan meal options."
-    },
-    {
-      "title": "Zero-Waste Kitchen Challenge",
-      "description":
-          "Eliminate food waste by meal planning, composting, and using reusable containers."
-    },
-    {
-      "title": "Eco-Friendly Transportation Challenge",
-      "description":
-          "Choose walking, biking, carpooling, or public transit over driving alone."
-    },
-    {
-      "title": "Energy Conservation Challenge",
-      "description":
-          "Conserve energy by turning off lights, using energy-efficient appliances, and adjusting your thermostat."
-    },
-    {
-      "title": "Plastic-Free Challenge",
-      "description":
-          "Switch to reusable alternatives and say no to single-use plastics."
-    },
-    {
-      "title": "Community Clean-Up Challenge",
-      "description":
-          "Join a clean-up event to remove litter from parks, beaches, or streets."
-    },
-    {
-      "title": "Green Gardening Challenge",
-      "description":
-          "Grow native plants, conserve water, and attract pollinators in your garden."
-    },
-    {
-      "title": "Digital Detox Challenge",
-      "description":
-          "Unplug from digital devices and spend time outdoors to reduce electronic waste."
-    },
-    {
-      "title": "Environmental Advocacy Challenge",
-      "description":
-          "Raise awareness and support eco-friendly policies to protect our planet."
-    }
-  ];
+  bool isJoining = true;
 
   Set<Marker> markers = Set();
-
-  List<Place> get items => [
-        Place(
-          name: TogetherCardList[0]['title']!,
-          latLng: LatLng(37.585511, 127.029305),
-          title: TogetherCardList[0]['title']!,
-          description: TogetherCardList[0]['description']!,
-        ),
-        Place(
-          name: TogetherCardList[1]['title']!,
-          latLng: LatLng(37.585766, 127.025178),
-          title: TogetherCardList[1]['title']!,
-          description: TogetherCardList[1]['description']!,
-        ),
-        Place(
-          name: TogetherCardList[2]['title']!,
-          latLng: LatLng(37.587192, 127.026794),
-          title: TogetherCardList[2]['title']!,
-          description: TogetherCardList[2]['description']!,
-        ),
-        Place(
-          name: TogetherCardList[3]['title']!,
-          latLng: LatLng(37.588428, 127.033653),
-          title: TogetherCardList[3]['title']!,
-          description: TogetherCardList[3]['description']!,
-        ),
-        Place(
-          name: TogetherCardList[4]['title']!,
-          latLng: LatLng(37.592643, 127.025150),
-          title: TogetherCardList[4]['title']!,
-          description: TogetherCardList[4]['description']!,
-        ),
-        Place(
-          name: TogetherCardList[5]['title']!,
-          latLng: LatLng(37.590065, 127.036342),
-          title: TogetherCardList[5]['title']!,
-          description: TogetherCardList[5]['description']!,
-        ),
-        Place(
-          name: TogetherCardList[6]['title']!,
-          latLng: LatLng(37.575837, 127.027792),
-          title: TogetherCardList[6]['title']!,
-          description: TogetherCardList[6]['description']!,
-        ),
-        Place(
-          name: TogetherCardList[7]['title']!,
-          latLng: LatLng(37.581606, 127.031548),
-          title: TogetherCardList[7]['title']!,
-          description: TogetherCardList[7]['description']!,
-        ),
-      ];
 
   final LatLng _initialPosition =
       const LatLng(37.590001, 127.027635); // 초기 위치 설정
@@ -253,60 +150,18 @@ class MapScreenState extends State<MapScreen> {
     );
   }
 
-  // Future<void> _showMarkerInfoDialog(
-  //     BuildContext context, String message) async {
-  //   return showDialog<void>(
-  //     context: context,
-  //     builder: (BuildContext context) {
-  //       return AlertDialog(
-  //         title: Text('Marker Info'),
-  //         content: SingleChildScrollView(
-  //           child: ListBody(
-  //             children: <Widget>[
-  //               Text(message),
-  //             ],
-  //           ),
-  //         ),
-  //         actions: <Widget>[
-  //           TextButton(
-  //             child: Text('Close'),
-  //             onPressed: () {
-  //               Navigator.of(context).pop();
-  //             },
-  //           ),
-  //         ],
-  //       );
-  //     },
-  //   );
-  // }
-
-  // Future<Marker> Function(Cluster<Place>) get _markerBuilder =>
-  //     (cluster) async {
-  //       return Marker(
-  //         markerId: MarkerId(cluster.getId()),
-  //         position: cluster.location,
-  //         onTap: () {
-  //           String message = ''; // 마커에 대한 정보 생성
-  //           cluster.items.forEach((p) => message += '${p.name}\n');
-  //           _showMarkerInfoDialog(context, message); // 다이얼로그 표시
-  //         },
-  //         icon: await _getMarkerBitmap(cluster.isMultiple ? 125 : 75,
-  //             text: cluster.isMultiple ? cluster.count.toString() : null),
-  //       );
-  //     };
-
   Future<Marker> Function(Cluster<Place>) get _markerBuilder =>
       (cluster) async {
         return Marker(
           markerId: MarkerId(cluster.getId()),
           position: cluster.location,
           onTap: () {
-            String title = 'Cluster Info'; // 마커에 대한 제목
             String description = ''; // 마커에 대한 설명 생성
             cluster.items.forEach((p) => description += '${p.name}\n');
             int contrib = cluster.items.length; // 기여자 수
+            int card = cluster.items.length;
             _showMarkerInfoDialog(
-                context, title, description, contrib); // DescriptionCard 표시
+                context, description, contrib, card); // DescriptionCard 표시
           },
           icon: await _getMarkerBitmap(
             cluster.isMultiple ? 125 : 75,
@@ -315,25 +170,27 @@ class MapScreenState extends State<MapScreen> {
         );
       };
 
-  Future<void> _showMarkerInfoDialog(BuildContext context, String title,
-      String description, int contrib) async {
+  Future<void> _showMarkerInfoDialog(
+      BuildContext context, String description, int contrib, int card) async {
     return showDialog<void>(
       context: context,
       builder: (BuildContext context) {
+        double app_height = MediaQuery.of(context).size.height;
+        double app_width = MediaQuery.of(context).size.width;
         return Stack(
           children: [
             Scaffold(
               backgroundColor:
-                  const Color.fromARGB(0, 255, 255, 255), // 배경을 투명하게 만듭니다.
+                  Color.fromARGB(0, 255, 255, 255), // 배경을 투명하게 만듭니다.
               body: Container(), // 터치 이벤트를 막기 위한 빈 컨테이너입니다.
             ),
-            Center(
+            Positioned(
+              bottom: app_height * 0.05,
+              left: app_width * 0.1,
               child: Container(
-                width:
-                    MediaQuery.of(context).size.width * 0.8, // 화면 너비의 80%로 설정
-                height:
-                    MediaQuery.of(context).size.height * 0.5, // 화면 높이의 50%로 설정
-                padding: EdgeInsets.all(16), // 내부 패딩 설정
+                width: app_width * 0.8, // 화면 너비의 80%로 설정
+                height: app_height * 0.36, // 화면 높이의 50%로 설정
+                padding: EdgeInsets.fromLTRB(10, 10, 10, 10), // 내부 패딩 설정
                 decoration: BoxDecoration(
                   color: Colors.white, // 배경색 설정
                   borderRadius: BorderRadius.circular(8), // 모서리 둥글게 설정
@@ -347,24 +204,71 @@ class MapScreenState extends State<MapScreen> {
                   ],
                 ),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
-                      title,
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          description,
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.w600),
+                        ),
+                        SizedBox(width: 35), // 아이콘 버튼과 흰색 네모 사이의 간격
+                        IconButton(
+                          icon: Icon(Icons.close),
+                          color: PRIMARY_COLOR, // 아이콘 버튼의 색상 설정
+                          onPressed: () {
+                            Navigator.of(context).pop(); // 다이얼로그 닫기
+                          },
+                        ),
+                      ],
                     ),
                     SizedBox(height: 10),
-                    Text(
-                      description,
-                      style: TextStyle(fontSize: 16),
+                    Image.asset(
+                      "assets/img/c$card.png",
+                      width: app_width * 0.8, // 이미지의 너비를 100으로 설정
+                      height: app_height * 0.20,
+                      fit: BoxFit.fill,
                     ),
                     SizedBox(height: 10),
-                    Text(
-                      'Contributors: $contrib',
-                      style: TextStyle(fontSize: 16),
+                    Row(
+                      children: [
+                        Icon(Icons.person),
+                        Text(
+                          ' $contrib / 10',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        SizedBox(width: app_width * 0.4),
+                        IconButton(
+                          onPressed: () {},
+                          icon: Icon(Icons.chat_bubble_outline_rounded),
+                          color: PRIMARY_COLOR,
+                        ),
+                        SizedBox(width: app_width * 0.01),
+                        TextButton(
+                          onPressed: () {
+                            setState(() {
+                              // Join 상태이면 Cancel 상태로, 그 반대도 마찬가지
+                              isJoining = !isJoining;
+                              contrib++;
+                            });
+                            print("Contrib: $contrib");
+                          },
+                          child: Text(
+                            isJoining ? "Join" : "Cancel", // Join 또는 Cancel 텍스트
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          style: TextButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            backgroundColor: isJoining
+                                ? Colors.orange // Join 상태일 때 버튼 색상
+                                : Colors.red, // Cancel 상태일 때 버튼 색상
+                          ),
+                        )
+                      ],
                     ),
                   ],
                 ),
