@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:routemaster/routemaster.dart';
 
 class FlowerGrow extends StatefulWidget {
   final String? image1;
   final String? image2;
   final String? image3;
   final String? image4;
+  final String? image5;
   final String? water;
   final int? countwater; // 추가: 버튼 활성화 여부 결정을 위한 count 변수
 
@@ -13,6 +17,7 @@ class FlowerGrow extends StatefulWidget {
     this.image2,
     this.image3,
     this.image4,
+    this.image5,
     this.water,
     this.countwater,
     Key? key,
@@ -30,13 +35,27 @@ class _FlowerGrowState extends State<FlowerGrow> {
   @override
   void initState() {
     super.initState();
-    _images = [widget.image1, widget.image2, widget.image3, widget.image4];
+    _images = [
+      widget.image1,
+      widget.image2,
+      widget.image3,
+      widget.image4,
+      widget.image5
+    ];
     _count = widget.countwater ?? 0; // count 값 초기 설정
   }
 
   void _changeImage() {
+    final String userId = FirebaseAuth.instance.currentUser!.uid;
     setState(() {
       _currentImageIndex = (_currentImageIndex + 1) % _images.length;
+      if (_currentImageIndex == 4) {
+        // _currentImageIndex가 5가 되면 'flower1'의 값을 증가시킴
+        // 현재 사용자 데이터에 접근하여 해당 값을 업데이트합니다.
+        FirebaseFirestore.instance.collection('Users').doc(userId).update({
+          'user_flower_counts.flower1': FieldValue.increment(1),
+        });
+      }
       _count--; // count 값을 감소시킴
     });
   }

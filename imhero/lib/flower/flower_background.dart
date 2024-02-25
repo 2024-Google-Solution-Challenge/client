@@ -11,13 +11,13 @@ class FlowerBackGround extends StatelessWidget {
       color: INPUT_BG_COLOR,
       child: Column(
         children: [
-          SizedBox(height: app_height * 0.33),
+          SizedBox(height: app_height * 0.35),
           Image.asset(
             'assets/img/shelf.png',
             width: app_width,
             fit: BoxFit.fill,
           ),
-          SizedBox(height: app_height * 0.20),
+          SizedBox(height: app_height * 0.21),
           Image.asset(
             'assets/img/shelf.png',
             width: app_width,

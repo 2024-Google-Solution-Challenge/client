@@ -6,9 +6,11 @@ import 'package:imhero/map/map_screen.dart';
 import 'package:imhero/common/root_tab.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   runApp(const MainApp());
 }
 
@@ -22,9 +24,9 @@ class MainApp extends StatelessWidget {
         fontFamily: 'NotoSans',
       ),
       debugShowCheckedModeBanner: false,
-      home: const Scaffold(
-        //body: MapScreen(),
-        body: RootTab(),
+      home: Scaffold(
+        body: MapScreen(),
+        // body: SplashScreen(),
       ),
     );
   }

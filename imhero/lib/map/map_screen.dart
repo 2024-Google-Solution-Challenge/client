@@ -13,6 +13,7 @@ import 'package:imhero/common/colors.dart';
 import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
 import 'package:imhero/map/description_card.dart';
 import 'package:imhero/map/map_plus.dart';
+import 'package:imhero/map/calendar.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class MapScreen extends StatefulWidget {
 class MapScreenState extends State<MapScreen> {
   late ClusterManager _manager;
   late GoogleMapController mapController;
-  bool isJoining = true;
+  List<bool> isJoiningList = List.filled(8, true);
 
   Set<Marker> markers = Set();
 
@@ -190,7 +191,7 @@ class MapScreenState extends State<MapScreen> {
 
   Future<void> _showMarkerInfoDialog(
       BuildContext context, String description, int contrib, int card) async {
-    return showDialog<void>(
+    return await showDialog<void>(
       context: context,
       builder: (BuildContext context) {
         double app_height = MediaQuery.of(context).size.height;
@@ -204,10 +205,10 @@ class MapScreenState extends State<MapScreen> {
             ),
             Positioned(
               bottom: app_height * 0.05,
-              left: app_width * 0.1,
+              left: app_width * 0.05,
               child: Container(
-                width: app_width * 0.8, // 화면 너비의 80%로 설정
-                height: app_height * 0.36, // 화면 높이의 50%로 설정
+                width: app_width * 0.9, // 화면 너비의 80%로 설정
+                height: app_height * 0.37, // 화면 높이의 50%로 설정
                 padding: EdgeInsets.fromLTRB(10, 10, 10, 10), // 내부 패딩 설정
                 decoration: BoxDecoration(
                   color: Colors.white, // 배경색 설정
@@ -228,11 +229,13 @@ class MapScreenState extends State<MapScreen> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Text(
-                          description,
+                          description.length > 25
+                              ? '${description.substring(0, 25)}...'
+                              : description,
                           style: TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w600),
                         ),
-                        SizedBox(width: 35), // 아이콘 버튼과 흰색 네모 사이의 간격
+                        SizedBox(width: 8), // 아이콘 버튼과 흰색 네모 사이의 간격
                         IconButton(
                           icon: Icon(Icons.close),
                           color: PRIMARY_COLOR, // 아이콘 버튼의 색상 설정
@@ -245,7 +248,7 @@ class MapScreenState extends State<MapScreen> {
                     SizedBox(height: 10),
                     Image.asset(
                       "assets/img/c$card.png",
-                      width: app_width * 0.8, // 이미지의 너비를 100으로 설정
+                      width: app_width * 0.85, // 이미지의 너비를 100으로 설정
                       height: app_height * 0.20,
                       fit: BoxFit.fill,
                     ),
@@ -257,35 +260,41 @@ class MapScreenState extends State<MapScreen> {
                           ' $contrib / 10',
                           style: TextStyle(fontSize: 16),
                         ),
-                        SizedBox(width: app_width * 0.4),
+                        SizedBox(width: app_width * 0.3),
                         IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            UrlLauncher.launchURL(
+                                'https://calendar.google.com/calendar/u/0/r?pli=1');
+                          },
                           icon: Icon(Icons.chat_bubble_outline_rounded),
                           color: PRIMARY_COLOR,
                         ),
                         SizedBox(width: app_width * 0.01),
-                        TextButton(
-                          onPressed: () {
-                            setState(() {
-                              // Join 상태이면 Cancel 상태로, 그 반대도 마찬가지
-                              isJoining = !isJoining;
-                              contrib++;
-                            });
-                            print("Contrib: $contrib");
-                          },
-                          child: Text(
-                            isJoining ? "Join" : "Cancel", // Join 또는 Cancel 텍스트
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          style: TextButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            backgroundColor: isJoining
-                                ? Colors.orange // Join 상태일 때 버튼 색상
-                                : Colors.red, // Cancel 상태일 때 버튼 색상
-                          ),
-                        )
+                        Container(
+                            height: app_height * 0.045,
+                            child: TextButton(
+                              onPressed: () {
+                                setState(() {
+                                  isJoiningList[card - 1]
+                                      ? contrib++
+                                      : contrib--;
+                                  isJoiningList[card - 1] =
+                                      !isJoiningList[card - 1];
+                                });
+                              },
+                              child: Text(
+                                isJoiningList[card - 1] ? "Join" : "Cancel",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              style: TextButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                backgroundColor: isJoiningList[card - 1]
+                                    ? Color.fromARGB(255, 255, 140, 0)
+                                    : Colors.red,
+                              ),
+                            ))
                       ],
                     ),
                   ],
