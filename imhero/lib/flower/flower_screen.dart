@@ -136,36 +136,39 @@ class _FlowerScreenState extends State<FlowerScreen> {
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
                                         FlowerGrow(
-                                          water: 'assets/img/waterpink.png',
+                                          water: 'assets/img/circle_pink.png',
                                           image1: 'assets/img/ver1.png',
                                           image2: 'assets/img/ver2.png',
                                           image3: 'assets/img/ver3_pink.png',
                                           image4: 'assets/img/ver4_pink.png',
                                           image5: 'assets/img/ver5_pink.png',
+                                          colorwater: const Color(0xFFFE5C96),
                                           countwater:
                                               userData['user_waterdrop_counts']
                                                       ['waterdrop1'] ??
                                                   0,
                                         ),
                                         FlowerGrow(
-                                          water: 'assets/img/waterpink.png',
+                                          water: 'assets/img/circle_blue.png',
                                           image1: 'assets/img/ver1.png',
                                           image2: 'assets/img/ver2.png',
                                           image3: 'assets/img/ver3_skyblue.png',
                                           image4: 'assets/img/ver4_skyblue.png',
                                           image5: 'assets/img/ver5_skyblue.png',
+                                          colorwater: const Color(0xFFC1D6FF),
                                           countwater:
                                               userData['user_waterdrop_counts']
                                                       ?['waterdrop2'] ??
                                                   0,
                                         ),
                                         FlowerGrow(
-                                          water: 'assets/img/waterpink.png',
+                                          water: 'assets/img/circle_yellow.png',
                                           image1: 'assets/img/ver1.png',
                                           image2: 'assets/img/ver2.png',
                                           image3: 'assets/img/ver3_yellow.png',
                                           image4: 'assets/img/ver4_yellow.png',
                                           image5: 'assets/img/ver5_yellow.png',
+                                          colorwater: const Color(0xFF894600),
                                           countwater:
                                               userData['user_waterdrop_counts']
                                                       ?['waterdrop3'] ??
@@ -183,38 +186,39 @@ class _FlowerScreenState extends State<FlowerScreen> {
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
                                         FlowerGrow(
-                                          water: 'assets/img/waterpink.png',
+                                          water: 'assets/img/circle_white.png',
                                           image1: 'assets/img/ver1.png',
                                           image2: 'assets/img/ver2.png',
                                           image3: 'assets/img/ver3_white.png',
                                           image4: 'assets/img/ver4_white.png',
                                           image5: 'assets/img/ver5_white.png',
-
-                                          ///"${userData?['name'] ?? "N/A"}",
+                                          colorwater: const Color(0xFFFFEB80),
                                           countwater:
                                               userData['user_waterdrop_counts']
                                                       ['waterdrop4'] ??
                                                   0,
                                         ),
                                         FlowerGrow(
-                                          water: 'assets/img/waterpink.png',
+                                          water: 'assets/img/circle_purple.png',
                                           image1: 'assets/img/ver1.png',
                                           image2: 'assets/img/ver2.png',
                                           image3: 'assets/img/ver3_purple.png',
                                           image4: 'assets/img/ver4_purple.png',
                                           image5: 'assets/img/ver5_purple.png',
+                                          colorwater: const Color(0xFFEA98FE),
                                           countwater:
                                               userData['user_waterdrop_counts']
                                                       ?['waterdrop5'] ??
                                                   0,
                                         ),
                                         FlowerGrow(
-                                          water: 'assets/img/waterpink.png',
+                                          water: 'assets/img/circle_navy.png',
                                           image1: 'assets/img/ver1.png',
                                           image2: 'assets/img/ver2.png',
                                           image3: 'assets/img/ver3_blue.png',
                                           image4: 'assets/img/ver4_blue.png',
                                           image5: 'assets/img/ver5_blue.png',
+                                          colorwater: const Color(0xFF798DFE),
                                           countwater:
                                               userData['user_waterdrop_counts']
                                                       ?['waterdrop6'] ??
