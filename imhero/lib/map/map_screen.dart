@@ -10,6 +10,7 @@ import 'package:imhero/common/button.dart';
 import 'package:rolling_switch/rolling_switch.dart';
 import 'package:imhero/common/colors.dart';
 import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
+import 'package:imhero/map/description_card.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -23,7 +24,7 @@ class MapScreenState extends State<MapScreen> {
   late GoogleMapController mapController;
   // bool isMapMode = true;
 
-  final TogetherCardList = [
+  final List<Map<String, String>> TogetherCardList = [
     {
       "title": "Reduce, Reuse, Recycle Challenge",
       "description":
@@ -78,16 +79,57 @@ class MapScreenState extends State<MapScreen> {
 
   Set<Marker> markers = Set();
 
-  List<Place> items = [
-    Place(name: 'place1', latLng: LatLng(37.585511, 127.029305)),
-    Place(name: 'hana Sciencehall', latLng: LatLng(37.585766, 127.025178)),
-    Place(name: 'anam hospital', latLng: LatLng(37.587192, 127.026794)),
-    Place(name: 'KOREA UNIV. main park', latLng: LatLng(37.588428, 127.033653)),
-    Place(name: 'main gym', latLng: LatLng(37.592643, 127.025150)),
-    Place(name: 'KOREA UNIV. Station', latLng: LatLng(37.590065, 127.036342)),
-    Place(name: 'sungbuk river', latLng: LatLng(37.575837, 127.027792)),
-    Place(name: 'jongam elementary', latLng: LatLng(37.581606, 127.031548)),
-  ];
+  List<Place> get items => [
+        Place(
+          name: TogetherCardList[0]['title']!,
+          latLng: LatLng(37.585511, 127.029305),
+          title: TogetherCardList[0]['title']!,
+          description: TogetherCardList[0]['description']!,
+        ),
+        Place(
+          name: TogetherCardList[1]['title']!,
+          latLng: LatLng(37.585766, 127.025178),
+          title: TogetherCardList[1]['title']!,
+          description: TogetherCardList[1]['description']!,
+        ),
+        Place(
+          name: TogetherCardList[2]['title']!,
+          latLng: LatLng(37.587192, 127.026794),
+          title: TogetherCardList[2]['title']!,
+          description: TogetherCardList[2]['description']!,
+        ),
+        Place(
+          name: TogetherCardList[3]['title']!,
+          latLng: LatLng(37.588428, 127.033653),
+          title: TogetherCardList[3]['title']!,
+          description: TogetherCardList[3]['description']!,
+        ),
+        Place(
+          name: TogetherCardList[4]['title']!,
+          latLng: LatLng(37.592643, 127.025150),
+          title: TogetherCardList[4]['title']!,
+          description: TogetherCardList[4]['description']!,
+        ),
+        Place(
+          name: TogetherCardList[5]['title']!,
+          latLng: LatLng(37.590065, 127.036342),
+          title: TogetherCardList[5]['title']!,
+          description: TogetherCardList[5]['description']!,
+        ),
+        Place(
+          name: TogetherCardList[6]['title']!,
+          latLng: LatLng(37.575837, 127.027792),
+          title: TogetherCardList[6]['title']!,
+          description: TogetherCardList[6]['description']!,
+        ),
+        Place(
+          name: TogetherCardList[7]['title']!,
+          latLng: LatLng(37.581606, 127.031548),
+          title: TogetherCardList[7]['title']!,
+          description: TogetherCardList[7]['description']!,
+        ),
+      ];
+
   final LatLng _initialPosition =
       const LatLng(37.590001, 127.027635); // 초기 위치 설정
 
@@ -148,17 +190,6 @@ class MapScreenState extends State<MapScreen> {
             ),
           ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _manager.setItems(<Place>[
-            for (int i = 0; i < 30; i++)
-              Place(
-                  name: 'New Place ${DateTime.now()} $i',
-                  latLng: LatLng(48.858265 + i * 0.01, 2.350107))
-          ]);
-        },
-        child: const Icon(Icons.update),
       ),
     );
   }
@@ -222,32 +253,47 @@ class MapScreenState extends State<MapScreen> {
     );
   }
 
-  Future<void> _showMarkerInfoDialog(
-      BuildContext context, String message) async {
-    return showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Marker Info'),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Text(message),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: Text('Close'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
+  // Future<void> _showMarkerInfoDialog(
+  //     BuildContext context, String message) async {
+  //   return showDialog<void>(
+  //     context: context,
+  //     builder: (BuildContext context) {
+  //       return AlertDialog(
+  //         title: Text('Marker Info'),
+  //         content: SingleChildScrollView(
+  //           child: ListBody(
+  //             children: <Widget>[
+  //               Text(message),
+  //             ],
+  //           ),
+  //         ),
+  //         actions: <Widget>[
+  //           TextButton(
+  //             child: Text('Close'),
+  //             onPressed: () {
+  //               Navigator.of(context).pop();
+  //             },
+  //           ),
+  //         ],
+  //       );
+  //     },
+  //   );
+  // }
+
+  // Future<Marker> Function(Cluster<Place>) get _markerBuilder =>
+  //     (cluster) async {
+  //       return Marker(
+  //         markerId: MarkerId(cluster.getId()),
+  //         position: cluster.location,
+  //         onTap: () {
+  //           String message = ''; // 마커에 대한 정보 생성
+  //           cluster.items.forEach((p) => message += '${p.name}\n');
+  //           _showMarkerInfoDialog(context, message); // 다이얼로그 표시
+  //         },
+  //         icon: await _getMarkerBitmap(cluster.isMultiple ? 125 : 75,
+  //             text: cluster.isMultiple ? cluster.count.toString() : null),
+  //       );
+  //     };
 
   Future<Marker> Function(Cluster<Place>) get _markerBuilder =>
       (cluster) async {
@@ -255,14 +301,80 @@ class MapScreenState extends State<MapScreen> {
           markerId: MarkerId(cluster.getId()),
           position: cluster.location,
           onTap: () {
-            String message = ''; // 마커에 대한 정보 생성
-            cluster.items.forEach((p) => message += '${p.name}\n');
-            _showMarkerInfoDialog(context, message); // 다이얼로그 표시
+            String title = 'Cluster Info'; // 마커에 대한 제목
+            String description = ''; // 마커에 대한 설명 생성
+            cluster.items.forEach((p) => description += '${p.name}\n');
+            int contrib = cluster.items.length; // 기여자 수
+            _showMarkerInfoDialog(
+                context, title, description, contrib); // DescriptionCard 표시
           },
-          icon: await _getMarkerBitmap(cluster.isMultiple ? 125 : 75,
-              text: cluster.isMultiple ? cluster.count.toString() : null),
+          icon: await _getMarkerBitmap(
+            cluster.isMultiple ? 125 : 75,
+            text: cluster.isMultiple ? cluster.count.toString() : null,
+          ),
         );
       };
+
+  Future<void> _showMarkerInfoDialog(BuildContext context, String title,
+      String description, int contrib) async {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return Stack(
+          children: [
+            Scaffold(
+              backgroundColor:
+                  const Color.fromARGB(0, 255, 255, 255), // 배경을 투명하게 만듭니다.
+              body: Container(), // 터치 이벤트를 막기 위한 빈 컨테이너입니다.
+            ),
+            Center(
+              child: Container(
+                width:
+                    MediaQuery.of(context).size.width * 0.8, // 화면 너비의 80%로 설정
+                height:
+                    MediaQuery.of(context).size.height * 0.5, // 화면 높이의 50%로 설정
+                padding: EdgeInsets.all(16), // 내부 패딩 설정
+                decoration: BoxDecoration(
+                  color: Colors.white, // 배경색 설정
+                  borderRadius: BorderRadius.circular(8), // 모서리 둥글게 설정
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5), // 그림자 색상 및 투명도 설정
+                      spreadRadius: 2, // 그림자 확장 반경 설정
+                      blurRadius: 5, // 그림자 흐림 정도 설정
+                      offset: Offset(0, 3), // 그림자 위치 설정
+                    ),
+                  ],
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      description,
+                      style: TextStyle(fontSize: 16),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      'Contributors: $contrib',
+                      style: TextStyle(fontSize: 16),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   Future<BitmapDescriptor> _getMarkerBitmap(int size, {String? text}) async {
     if (kIsWeb) size = (size / 2).floor();
