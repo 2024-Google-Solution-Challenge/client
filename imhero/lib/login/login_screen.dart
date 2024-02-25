@@ -307,52 +307,52 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  ElevatedButton loginButton() {
-    return ElevatedButton(
-      onPressed: () async {
-        if (_key.currentState!.validate()) {
-          // 여기에 작성
-          try {
-            UserCredential authResult =
-                await FirebaseAuth.instance.signInWithEmailAndPassword(
-              email: _emailController.text,
-              password: _pwdController.text,
-            );
+  // ElevatedButton loginButton() {
+  //   return ElevatedButton(
+  //     onPressed: () async {
+  //       if (_key.currentState!.validate()) {
+  //         // 여기에 작성
+  //         try {
+  //           UserCredential authResult =
+  //               await FirebaseAuth.instance.signInWithEmailAndPassword(
+  //             email: _emailController.text,
+  //             password: _pwdController.text,
+  //           );
 
-            if (authResult.user != null) {
-              // 로그인 성공한 경우
-              // 해당 사용자의 정보를 Firestore에서 가져옴
-              // DocumentSnapshot userSnapshot = await FirebaseFirestore.instance
-              //     .collection('Users')
-              //     .doc(authResult.user!.uid)
-              //     .get();
+  //           if (authResult.user != null) {
+  //             // 로그인 성공한 경우
+  //             // 해당 사용자의 정보를 Firestore에서 가져옴
+  //             // DocumentSnapshot userSnapshot = await FirebaseFirestore.instance
+  //             //     .collection('Users')
+  //             //     .doc(authResult.user!.uid)
+  //             //     .get();
 
-              // 사용자 정보를 Map 형태로 추출
+  //             // 사용자 정보를 Map 형태로 추출
 
-              // '/home' 라우트로 이동하면서 사용자 정보를 전달
+  //             // '/home' 라우트로 이동하면서 사용자 정보를 전달
 
-              Routemaster.of(context).push('/');
-            }
-          } on FirebaseAuthException catch (e) {
-            if (e.code == 'user-not-found') {
-              debugPrint('No user found for that email.');
-            } else if (e.code == 'wrong-password') {
-              debugPrint('Wrong password provided for that user.');
-            }
-          }
-        }
-      },
-      child: Container(
-        padding: const EdgeInsets.all(15),
-        child: const Text(
-          "Login",
-          style: TextStyle(
-            fontSize: 18,
-          ),
-        ),
-      ),
-    );
-  }
+  //             Routemaster.of(context).push('/');
+  //           }
+  //         } on FirebaseAuthException catch (e) {
+  //           if (e.code == 'user-not-found') {
+  //             debugPrint('No user found for that email.');
+  //           } else if (e.code == 'wrong-password') {
+  //             debugPrint('Wrong password provided for that user.');
+  //           }
+  //         }
+  //       }
+  //     },
+  //     child: Container(
+  //       padding: const EdgeInsets.all(15),
+  //       child: const Text(
+  //         "Login",
+  //         style: TextStyle(
+  //           fontSize: 18,
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
   Future<void> saveUserInfo(User user) async {
     try {

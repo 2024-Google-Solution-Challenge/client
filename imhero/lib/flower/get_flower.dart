@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:imhero/common/colors.dart';
 
 class GetFlowerForm extends StatelessWidget {
-  final int? count;
+  final String? count;
   final String? image;
 
   const GetFlowerForm({

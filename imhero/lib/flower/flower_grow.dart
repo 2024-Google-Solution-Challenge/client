@@ -6,7 +6,7 @@ class FlowerGrow extends StatefulWidget {
   final String? image3;
   final String? image4;
   final String? water;
-  final int? count; // 추가: 버튼 활성화 여부 결정을 위한 count 변수
+  final int? countwater; // 추가: 버튼 활성화 여부 결정을 위한 count 변수
 
   const FlowerGrow({
     this.image1,
@@ -14,7 +14,7 @@ class FlowerGrow extends StatefulWidget {
     this.image3,
     this.image4,
     this.water,
-    this.count,
+    this.countwater,
     Key? key,
   }) : super(key: key);
 
@@ -31,7 +31,7 @@ class _FlowerGrowState extends State<FlowerGrow> {
   void initState() {
     super.initState();
     _images = [widget.image1, widget.image2, widget.image3, widget.image4];
-    _count = 10; // count 값 초기 설정
+    _count = widget.countwater ?? 0; // count 값 초기 설정
   }
 
   void _changeImage() {

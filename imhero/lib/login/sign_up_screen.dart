@@ -220,7 +220,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextButton submitbutton(double app_width) {
     return TextButton(
       onPressed: () async {
+        // print('Sign up button pressed'); // 디버그 출력 추가
+
         if (_formkey.currentState!.validate()) {
+          // print('Form is valid');
           try {
             UserCredential authResult =
                 await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -228,6 +231,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               password: _pwdController.text,
             );
 
+            print('User signed up');
             // Firestore에 사용자 정보 추가
             await FirebaseFirestore.instance
                 .collection('Users')
@@ -257,88 +261,82 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 'waterdrop6': 0,
               },
             });
+            // });
 
-            // 등록 후 /로 이동
-            Routemaster.of(context).push('/');
+            showDialog(
+              context: context,
+              barrierDismissible: true,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  backgroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0)),
+                  //Dialog Main Title
+                  title: Column(
+                    children: <Widget>[
+                      Image.asset(
+                        'assets/img/imhero.png',
+                        width: MediaQuery.of(context).size.width / 3 * 2,
+                      ),
+                      new Text("Sign up Complete!!"),
+                    ],
+                  ),
+                  content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        "Have a Good TIme in I'm Hero :)",
+                      ),
+                    ],
+                  ),
+                  actions: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        TextButton(
+                          child: Text(
+                            "Sign in",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(18.0),
+                                side: BorderSide(color: PRIMARY_COLOR),
+                              ),
+                            ),
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(PRIMARY_COLOR),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LoginScreen(),
+                              ),
+                            );
+                            print('same password');
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                );
+              },
+            );
           } on FirebaseAuthException catch (e) {
+            print("catch");
             if (e.code == 'weak-password') {
               print('The password provided is too weak.');
             } else if (e.code == 'email-already-in-use') {
               print('The account already exists for that email.');
-            }
+            } else
+              print(e);
           } catch (e) {
             print(e.toString());
           }
-
-          showDialog(
-            context: context,
-            barrierDismissible: true,
-            builder: (BuildContext context) {
-              return AlertDialog(
-                backgroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0)),
-                //Dialog Main Title
-                title: Column(
-                  children: <Widget>[
-                    Image.asset(
-                      'assets/img/imhero.png',
-                      width: MediaQuery.of(context).size.width / 3 * 2,
-                    ),
-                    new Text("Sign up Complete!!"),
-                  ],
-                ),
-                content: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      "Have a Good TIme in I'm Hero :)",
-                    ),
-                  ],
-                ),
-                actions: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      TextButton(
-                        child: Text(
-                          "Sign in",
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        style: ButtonStyle(
-                          shape:
-                              MaterialStateProperty.all<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(18.0),
-                              side: BorderSide(color: PRIMARY_COLOR),
-                            ),
-                          ),
-                          backgroundColor:
-                              MaterialStateProperty.all<Color>(PRIMARY_COLOR),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => LoginScreen(),
-                            ),
-                          );
-                          print('same password');
-                        },
-                      ),
-                    ],
-                  ),
-                ],
-              );
-            },
-          );
-
-          // Navigator.push(
-          //     context,
-          //     MaterialPageRoute(
-          //         builder: (context) => LoginScreen()));
-          // print('same password');
         }
         print('sign up - sign up page');
       },
