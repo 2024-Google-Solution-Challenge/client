@@ -67,7 +67,10 @@ class _FlowerScreenState extends State<FlowerScreen> {
                     AsyncSnapshot<DocumentSnapshot> snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     // 데이터를 기다리는 동안 표시할 로딩 화면을 반환합니다.
-                    return CircularProgressIndicator();
+                    return const SizedBox(
+                        width: 60,
+                        height: 60,
+                        child: CircularProgressIndicator());
                   } else {
                     if (snapshot.hasData && snapshot.data!.exists) {
                       // Firestore에서 사용자 데이터를 가져옵니다.
@@ -322,7 +325,7 @@ class _FlowerScreenState extends State<FlowerScreen> {
                       );
                     } else {
                       // 사용자 데이터가 없는 경우에 대한 처리를 수행합니다.
-                      return Text('No user data available');
+                      return const Text('No user data available');
                     }
                   }
                 });

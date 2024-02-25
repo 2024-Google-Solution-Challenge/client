@@ -17,7 +17,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
   Widget build(BuildContext context) {
     final sample = [
       {
-        'profile': 'assets/img/profile.png',
+        'profile': 'assets/img/profile1.png',
         'accountName': 'LeafySam',
         'content':
             '🌿 Calling all eco-warriors! 🌍✨ Who\'s ready to embark on a "plogging" adventure today? 🏃‍♂️💨 Let\'s hit the streets, get our hearts pumping, and make our planet cleaner one stride at a time! 🌱🚯🌟 Together, we can make a difference and leave a greener, cleaner world for generations to come! 💚 #PloggingAdventure #CleanStreets 🌎🏃‍♀️',
@@ -26,7 +26,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
         'isHearted': true,
       },
       {
-        'profile': 'assets/img/profile.png',
+        'profile': 'assets/img/profile2.png',
         'accountName': 'GreenTina',
         'content':
             '🌟 Today, I nailed my recycling game! ♻️💪 Feeling proud of my eco-friendly choices! 🌍 Let\'s keep up the good work for a greener world! 🌱🌟 #RecyclingWin #EcoHero 🌿👍',
@@ -35,7 +35,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
         'isHearted': false,
       },
       {
-        'profile': 'assets/img/profile.png',
+        'profile': 'assets/img/profile3.png',
         'accountName': 'SproutiePie',
         'content':
             'Pack your bags🎒 and join the digital nomad tribe! Explore exotic destinations, conquer remote work challenges, and unlock the secrets of work-life balance on the road. Get ready to embrace freedom, adventure, and endless possibilities! 🌏🌴',
@@ -44,7 +44,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
         'isHearted': true,
       },
       {
-        'profile': 'assets/img/profile.png',
+        'profile': 'assets/img/profile4.png',
         'accountName': 'NatureNook',
         'content':
             'Join the eco-conscious movement!🌳🌿🌱 Let\'s take a journey together to explore simple yet impactful ways to live sustainably. From reducing plastic waste to embracing renewable energy, together, we can make a positive change for our planet! 🌍💚',
