@@ -1,29 +1,47 @@
 {
-  "project_info": {
-    "project_number": "468540968920",
-    "project_id": "i-m-hero-fcc9f",
-    "storage_bucket": "i-m-hero-fcc9f.appspot.com"
-  },
-  "client": [
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:468540968920:android:83e10495490cd015bc2cad",
-        "android_client_info": {
-          "package_name": "com.example.imhero"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAjyML-rptkXGnLyGVr_BQpOxuVccG0PWY"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    }
-  ],
-  "configuration_version": "1"
+	"project_info": {
+		"project_number": "468540968920",
+		"project_id": "i-m-hero-fcc9f",
+		"storage_bucket": "i-m-hero-fcc9f.appspot.com"
+	},
+	"web": {
+		"client_id": "327978832792-tfvkde576iairu1t4vvbvjpso8vvpesk.apps.googleusercontent.com",
+		"project_id": "smart-idiom-414204",
+		"auth_uri": "https://accounts.google.com/o/oauth2/auth",
+		"token_uri": "https://oauth2.googleapis.com/token",
+		"auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+		"client_secret": "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",
+		"javascript_origins": ["https://i-m-hero-fcc9f.web.app"]
+	},
+	"client": [
+		{
+			"client_info": {
+				"mobilesdk_app_id": "1:468540968920:android:83e10495490cd015bc2cad",
+				"android_client_info": {
+					"package_name": "com.example.imhero"
+				}
+			},
+			"oauth_client": [],
+			"api_key": [
+				{
+					"current_key": "AIzaSyAjyML-rptkXGnLyGVr_BQpOxuVccG0PWY"
+				}
+			],
+			"services": {
+				"appinvite_service": {
+					"other_platform_oauth_client": []
+				}
+			}
+		}
+	],
+	"configuration_version": "1",
+
+	"installed": {
+		"client_id": "327978832792-lchelpga0mpkfni6qb8vm197onpskapk.apps.googleusercontent.com",
+		"project_id": "smart-idiom-414204",
+		"auth_uri": "https://accounts.google.com/o/oauth2/auth",
+		"token_uri": "https://oauth2.googleapis.com/token",
+		"auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs"
+	}
 }
+

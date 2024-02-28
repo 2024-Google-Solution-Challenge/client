@@ -3,31 +3,33 @@ description: "A new Flutter project."
 publish_to: "none"
 version: 0.1.0
 
+uses-material-design: true
+
 environment:
     sdk: ">=3.2.0-231.0.dev <4.0.0"
 
 dependencies:
-  fl_chart: ^0.66.1
-  flutter:
-    sdk: flutter
-  flutter_svg: ^2.0.9
-  google_maps_cluster_manager: ^3.1.0
-  google_maps_flutter: ^2.5.3
-  google_sign_in: ^6.2.1
-  firebase_core: ^2.25.4
-  cloud_firestore: ^4.15.5
-  firebase_auth: ^4.17.4
-  routemaster: ^1.0.1
-  geolocator: ^11.0.0
-  geodesy: ^0.10.2
-  firebase_storage: ^11.6.6
-  file_picker: ^6.1.1
-  path_provider: ^2.1.2
-  rolling_switch: ^0.0.2
-  flutter_advanced_switch: ^3.0.1
-  geocoding: ^2.2.0
-  url_launcher: ^6.2.5
-
+    fl_chart: ^0.66.1
+    flutter:
+        sdk: flutter
+    flutter_svg: ^2.0.9
+    google_maps_cluster_manager: ^3.1.0
+    google_maps_flutter: ^2.5.3
+    google_sign_in: ^6.2.1
+    firebase_core: ^2.25.4
+    cloud_firestore: ^4.15.5
+    firebase_auth: ^4.17.4
+    routemaster: ^1.0.1
+    geolocator: ^11.0.0
+    geodesy: ^0.10.2
+    firebase_storage: ^11.6.6
+    file_picker: ^6.1.1
+    path_provider: ^2.1.2
+    rolling_switch: ^0.0.2
+    flutter_advanced_switch: ^3.0.1
+    geocoding: ^2.2.0
+    url_launcher: ^6.2.5
+    cupertino_icons: ^1.0.2
 
 dev_dependencies:
     flutter_test:
@@ -56,3 +58,4 @@ flutter:
                 weight: 300
               - asset: assets/fonts/NotoSans-Thin.ttf
                 weight: 100
+

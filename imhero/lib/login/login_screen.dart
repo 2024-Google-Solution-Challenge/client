@@ -27,6 +27,32 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _pwdController = TextEditingController();
 
+  Future<UserCredential> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
+    // print("\n\n\n\n\n");
+    // print(googleAuth);
+
+    // return await FirebaseAuth.instance.signInWithCredential(
+    //   GoogleAuthProvider.credential(
+    //     accessToken: googleAuth?.accessToken,
+    //     idToken: googleAuth?.idToken,
+    //   ),
+    // );
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
+
   @override
   Widget build(BuildContext context) {
     double app_height = MediaQuery.of(context).size.height;
@@ -211,8 +237,42 @@ class _LoginScreenState extends State<LoginScreen> {
                         app_width * 0.12, 8, app_width * 0.12, 0),
                     child: TextButton(
                       onPressed: () {
-                        print('sign in button - google');
+                        signInWithGoogle().then((result) {
+                          if (result.additionalUserInfo!.isNewUser) {
+                            saveUserInfo(result.user!);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const RootTab()));
+                          }
+                        });
                       },
+                      // onPressed: () {
+                      //   GoogleSignIn _googleSignIn = GoogleSignIn(
+                      //     scopes: <String>[
+                      //       'email',
+                      //       'https://www.googleapis.com/auth/contacts.readonly',
+                      //     ],
+                      //   );
+                      //   _googleSignIn.signIn().then((value) {
+                      //     value!.authentication.then((value) {
+                      //       FirebaseAuth.instance
+                      //           .signInWithCredential(
+                      //         GoogleAuthProvider.credential(
+                      //             accessToken: value.accessToken,
+                      //             idToken: value.idToken,
+                      //             ),
+                      //       )
+                      //           .then((value) {
+                      //         saveUserInfo(value.user!);
+                      //         Navigator.push(
+                      //             context,
+                      //             MaterialPageRoute(
+                      //                 builder: (context) => const RootTab()));
+                      //       });
+                      //     });
+                      //   });
+                      // },
                       style: ButtonStyle(
                           padding: MaterialStateProperty.all<EdgeInsets>(
                               EdgeInsets.fromLTRB(
@@ -299,7 +359,6 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-
 
   Future<void> saveUserInfo(User user) async {
     try {

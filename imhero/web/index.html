@@ -16,6 +16,10 @@
   -->
 		<base href="$FLUTTER_BASE_HREF" />
 
+		<meta
+			name="google-signin-client_id"
+			content="[WEB_CLIENT_ID].apps.googleusercontent.com" />
+
 		<meta charset="UTF-8" />
 		<meta content="IE=Edge" http-equiv="X-UA-Compatible" />
 		<meta name="description" content="A new Flutter project." />
@@ -24,10 +28,10 @@
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 		<meta name="apple-mobile-web-app-title" content="imhero" />
-		<link rel="apple-touch-icon" href="icons/Icon-192.png" />
+		<link rel="apple-touch-icon" href="icons/applogo.png" />
 
 		<!-- Favicon -->
-		<link rel="icon" type="image/png" href="favicon.png" />
+		<link rel="icon" type="image/png" href="favicon.ico" />
 
 		<title>imhero</title>
 		<link rel="manifest" href="manifest.json" />
@@ -37,13 +41,13 @@
 			const serviceWorkerVersion = null;
 		</script>
 		<!-- This script adds the flutter initialization JS code -->
-		<script src="flutter.js" defer></script>
+		<script src="main.dart.js" defer=""></script>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwc9WyC-sHsyfCpp6Al2V8NtApAzbAHlw"></script>
 	</head>
 	<body>
 		<script>
 			window.addEventListener("load", function (ev) {
-				// Download main.dart.js
+				//Download main.dart.js
 				_flutter.loader.loadEntrypoint({
 					serviceWorker: {
 						serviceWorkerVersion: serviceWorkerVersion,
